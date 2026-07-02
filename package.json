@@ -1,0 +1,49 @@
+{
+    "name": "wa-uteq",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "@hookform/resolvers": "^2.0.0",
+        "axios": "^0.25.0",
+        "bootstrap": "^5.1.3",
+        "file-saver": "^2.0.5",
+        "formik": "^2.2.9",
+        "glob": "^8.0.3",
+        "google-map-react": "^2.1.10",
+        "html-to-image": "^1.9.0",
+        "isomorphic-dompurify": "^0.18.0",
+        "next": "^10.1.3",
+        "next-yup": "^1.1.0",
+        "prop-types": "^15.7.2",
+        "react": "^17.0.2",
+        "react-aria": "^3.12.0",
+        "react-bootstrap": "^2.1.1",
+        "react-data-table-component": "^7.4.7",
+        "react-dom": "^17.0.2",
+        "react-dropzone": "^12.0.4",
+        "react-error-boundary": "^3.1.4",
+        "react-google-recaptcha": "^2.1.0",
+        "react-hook-form": "^7.0.4",
+        "react-intl": "^6.2.8",
+        "react-multi-carousel": "^2.6.5",
+        "react-paginate": "^8.1.3",
+        "react-phone-number-input": "^3.1.47",
+        "react-player": "^2.9.0",
+        "react-responsive-carousel": "^3.2.22",
+        "react-router-dom": "^6.3.0",
+        "react-select": "^5.3.2",
+        "rxjs": "^6.6.7",
+        "terser-webpack-plugin": "^5.3.6",
+        "uuid": "^8.3.2",
+        "validator": "^13.7.0",
+        "yup": "^0.32.9"
+    },
+    "devDependencies": {
+        "file-loader": "^6.2.0"
+    }
+}
