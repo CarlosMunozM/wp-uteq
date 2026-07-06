@@ -81,3 +81,6 @@ export * from './BodyCaldAcadNiv';
 export * from './BodyProcesoAdmision';
 export * from './BodyContactoAdm';
 export * from './BodyPruebaIngresoAdms';
+
+
+export * from './BodyUsuarios';

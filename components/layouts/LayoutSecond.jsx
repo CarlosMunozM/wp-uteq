@@ -9,7 +9,8 @@ import {
     BodyCaldAcadNiv,
     BodyProcesoAdmision,
     BodyPruebaIngresoAdms,
-	BodySitioWebVicerrectorAdm
+    BodySitioWebVicerrectorAdm,
+    BodyUsuarios
 } from 'components/body';
 import { VIDEOS_FOLDER, GENERAL_IMGS_FOLDER } from 'config';
 import { ModalPage } from 'components';
@@ -191,10 +192,10 @@ function LayoutSecond(data) {
                 return BodyMapaSitioWeb(data);
             case 74:
                 // return BodySitioWebRector(data);
-        		return BodySitioWebVicerrectoraAcad(data);
+                return BodySitioWebVicerrectoraAcad(data);
             case 75:
                 // return BodySitioWebVicerrectoraAcad(data);
-        		return BodySitioWebRector(data);
+                return BodySitioWebRector(data);
             case 76:
                 return BodySitioWebVicerrectorAdm(data);
             case 77:
@@ -211,6 +212,8 @@ function LayoutSecond(data) {
                 return BodyContactoAdm(data);
             case 83:
                 return BodyPruebaIngresoAdms(data);
+            case 84:
+                return BodyUsuarios(data);
         }
     }
 

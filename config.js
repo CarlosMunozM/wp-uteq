@@ -165,7 +165,7 @@ const WS_VALIDATE_FORM = `${wsUrl}/ws/datos/validation/`;
 
 const WS_LIST_METRICS_SGA = 'https://sga.uteq.edu.ec/api?a=apiresumenacademia';
 const WS_SHORT_LIST_ENTITY_RESEARCH_SGA = 'https://sga.uteq.edu.ec/api?a=apiproduccioncientifica&tipo=';
-const WS_INFORMATION_ENTITY_SGA ='https://sga.uteq.edu.ec/api?a=apiregistroproduccioncientifica&tipo=VAL1&id=VAL2';
+const WS_INFORMATION_ENTITY_SGA = 'https://sga.uteq.edu.ec/api?a=apiregistroproduccioncientifica&tipo=VAL1&id=VAL2';
 const WS_LIST_ITEMS_ENTITY_CBX_SGA = 'https://sga.uteq.edu.ec/api?a=areaconocimiento';
 const WS_LIST_ITEMS_ENTITY_CBX_BY_ID_SGA = 'https://sga.uteq.edu.ec/api?a=subareaconocimiento&id=';
 const WS_LIST_ITEMS_SA_CBX_BY_ID_SGA = 'https://sga.uteq.edu.ec/api?a=subareaespecificaconocimiento&id=';
@@ -217,6 +217,7 @@ const WS_LIST_SHORT_FILES_UNIV_LANGUAGES = `${wsUrl}/ws/files/files-languages/`;
 const WS_LIST_SHORT_FILES_FORMTS_UNIV_BY_TYPE_LANG = `${wsUrl}/ws/files/short-list-formats-lang/`;
 const WS_LIST_SHORT_FILES_IMAGES_UNIV_BY_TYPE_LANG = `${wsUrl}/ws/files/short-list-logos-lang/`;
 
+const WS_CRUD_USERS = `${wsUrl}/api/usuarios`;
 
 const SLIDERS_PRINCIPAL_FOLDER = '/assets/images/advertisements/principal/';
 const SLIDERS_OTHERS_FOLDER = '/assets/images/advertisements/others/';
@@ -273,11 +274,11 @@ const CAREER_ACADEMIC_IMGS_FOLDER = '/assets/images/careers/degrees/academic/';
 const CAREER_PROMOTION_IMGS_FOLDER = '/assets/images/careers/degrees/promotion/';
 const CAREER_PROMOTION_DOCS_FOLDER = '/assets/docs/careers/degrees/promotion/';
 
-const IMG_SLD_INVESTG_FOLDER ='/assets/images/sliders/research/';
-const DOCS_LINK_GRAD_FOLDER ='/assets/docs/linkage/graduates/';
-const IMG_JOBS_BS_FOLDER ='/assets/images/employments/';
-const IMG_PROJECT_LKG_FOLDER ='/assets/images/sliders/linkage/projects/';
-const IMG_PROJECT_RES_FOLDER ='/assets/images/sliders/research/projects/';
+const IMG_SLD_INVESTG_FOLDER = '/assets/images/sliders/research/';
+const DOCS_LINK_GRAD_FOLDER = '/assets/docs/linkage/graduates/';
+const IMG_JOBS_BS_FOLDER = '/assets/images/employments/';
+const IMG_PROJECT_LKG_FOLDER = '/assets/images/sliders/linkage/projects/';
+const IMG_PROJECT_RES_FOLDER = '/assets/images/sliders/research/projects/';
 const IMG_GENERAL_UNIVS_FOLDER = '/assets/images/sliders/general/';
 const IMG_EVENTS_DINMCS_FOLDER = '/assets/images/sliders/events/';
 const DOCS_EVENTS_DINMCS_FOLDER = '/assets/docs/events/';
@@ -340,12 +341,12 @@ export {
     WS_INFORMATION_CONGRESS_BY_CODE,
     WS_INFORMATION_LINKS_SYMPOSIUMS,
     WS_LIST_SYMPOSIUMS_BY_CONGRESS,
-	WS_LIST_POSTER_DETAILS,
+    WS_LIST_POSTER_DETAILS,
     WS_REGISTER_POINTS_PARTICIPANTS,
     WS_LIST_PARTICIPANTS_CHALLENGES,
     WS_LIST_PARTICIPANTS_CHALLENGES_V2,
-	
-	WS_REGISTER_ATTENDANCE_EVENT,
+
+    WS_REGISTER_ATTENDANCE_EVENT,
     WS_LIST_AGREEMENTS_BY_PARAMETERS,
     WS_LIST_DATA_GENERAL_NUM1,
     WS_INFORMATION_DEPARTAMENT,
@@ -380,7 +381,7 @@ export {
     WS_INFORMATION_PERSON_BY_FACULTY,
     WS_INFORMATION_PERSON_BY_CAREER,
     WS_LIST_CAREERS_UNIVERSITY_BY_DEPART,
-	WS_LIST_CAREERS_UNIVS_UAN,
+    WS_LIST_CAREERS_UNIVS_UAN,
     WS_LIST_SHORT_URLS_CAREERS_UNIVERSITY_BY_DEPART,
     WS_LIST_URLS_CAREERS_UNIVERSITY_BY_DEPART,
     WS_LIST_URLS_SM_CAREERS_UNIVERSITY_BY_DEPART,
@@ -457,7 +458,7 @@ export {
     WS_COUNT_AGREEMTS_4,
     WS_COUNT_AGREEMTS_5,
     WS_COUNT_AGREEMTS_6,
-	WS_LIST_AGREEMTS_CI_TYPE_1,
+    WS_LIST_AGREEMTS_CI_TYPE_1,
     WS_LIST_AGREEMTS_CI_TYPE_2,
     WS_LIST_AGREEMTS_CI_TYPE_3,
     WS_LIST_TESTIMONIALS,
@@ -470,11 +471,11 @@ export {
     WS_LIST_SHORT_FILES_FORMTS_UNIV_BY_TYPE_LANG,
     WS_LIST_SHORT_FILES_IMAGES_UNIV_BY_TYPE_LANG,
 
-	// Maestrías
+    // Maestrías
     MASTER_PROMOTION_IMGS_FOLDER,
     MASTER_PROMOTION_DOCS_FOLDER,
     MASTER_ACADEMIC_IMGS_FOLDER,
-    
+
 
     SLIDERS_PRINCIPAL_FOLDER,
     SLIDERS_OTHERS_FOLDER,
@@ -513,7 +514,7 @@ export {
     UTQINV_IMGS_FOLDER,
     UBU_SERVICIOS_IMGS_FOLDER,
     CAREER_ACADEMIC_IMGS_FOLDER,
-    CAREER_PROMOTION_IMGS_FOLDER, 
+    CAREER_PROMOTION_IMGS_FOLDER,
     CAREER_PROMOTION_DOCS_FOLDER,
     UBU_DOCS_FOLDER,
     TRAB_SOC_UBU_DOCS_FOLDER,

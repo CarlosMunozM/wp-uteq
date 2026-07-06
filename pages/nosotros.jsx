@@ -12,7 +12,7 @@ const Historia = (props) => {
 export default Historia;
 
 async function make_request_ws(path_url) {
-    var listTemp=null;
+    var listTemp = null;
     const https = require('https');
     const agent = new https.Agent({
         rejectUnauthorized: false
@@ -64,7 +64,7 @@ export const getStaticProps = async ({ locale }) => {
             titlepage: (locale === "es" ? 'Nosotros - UTEQ' : (locale === "en" ? 'About us - UTEQ' : 'Sobre nós - UTEQ')),
             descpage: (locale === "es" ? 'Sitio web de información institucional de la UTEQ' : (locale === "en" ? 'UTEQ Institutional Information Website' : 'Sítio de informação institucional da UTEQ')),
             urlpageweb: `${apiUrl}/${locale}/nosotros`,
-            urlimage: `${FRONT_PG_IMGS_FOLDER}${locale==="es"?"imagen_historia_uteq_es.jpg":(locale==="en"?"imagen_historia_uteq_en.jpg":"imagen_historia_uteq_pt.jpg")}`,
+            urlimage: `${FRONT_PG_IMGS_FOLDER}${locale === "es" ? "imagen_historia_uteq_es.jpg" : (locale === "en" ? "imagen_historia_uteq_en.jpg" : "imagen_historia_uteq_pt.jpg")}`,
             bannerimg: resInfoUniversity.data.dpImgBanner.trim(),
             codpage: '18419656-891a-11ec-83c4-244bfe557d55',
             language: locale
