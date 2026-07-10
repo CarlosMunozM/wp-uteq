@@ -240,21 +240,6 @@ function BodyCarrera(data) {
                                         }
                                         {
                                             (data.language === "es" ? (
-                                                (data.career.crDurac !== null && data.career.crDurac !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDurac.trim())}></div>
-                                                </>) : ""
-                                            ) : (data.language === "en" ? (
-                                                (data.career.crDuracEn !== null && data.career.crDuracEn !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDuracEn.trim())}></div>
-                                                </>) : ""
-                                            ) : (
-                                                (data.career.crDuracPt !== null && data.career.crDuracPt !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDuracPt.trim())}></div>
-                                                </>) : ""
-                                            )))
-                                        }
-                                        {
-                                            (data.language === "es" ? (
                                                 (data.career.crHorarios !== null && data.career.crHorarios !== '') ? (<>
                                                     <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crHorarios.trim())}></div>
                                                 </>) : ""
@@ -265,6 +250,21 @@ function BodyCarrera(data) {
                                             ) : (
                                                 (data.career.crHorariosPt !== null && data.career.crHorariosPt !== '') ? (<>
                                                     <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crHorariosPt.trim())}></div>
+                                                </>) : ""
+                                            )))
+                                        }
+                                        {
+                                            (data.language === "es" ? (
+                                                (data.career.crDurac !== null && data.career.crDurac !== '') ? (<>
+                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDurac.trim())}></div>
+                                                </>) : ""
+                                            ) : (data.language === "en" ? (
+                                                (data.career.crDuracEn !== null && data.career.crDuracEn !== '') ? (<>
+                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDuracEn.trim())}></div>
+                                                </>) : ""
+                                            ) : (
+                                                (data.career.crDuracPt !== null && data.career.crDuracPt !== '') ? (<>
+                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDuracPt.trim())}></div>
                                                 </>) : ""
                                             )))
                                         }
