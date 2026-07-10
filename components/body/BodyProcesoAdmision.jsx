@@ -437,13 +437,13 @@ function BodyProcesoAdmision(data) {
                                 </ul>
                             
                             {/*activar fechas*/}
-                            {/*<span className="text-date-phase mb-4">
+                            {<span className="text-date-phase mb-4">
                                     {data.language === "es"
-                                        ? "Del 08 de enero al 03 de marzo 2026"
+                                        ? "Del 10 de julio al 27 de julio del  2026"
                                         : (data.language === "en"
-                                            ? "From January 08 to March 03, 2026"
-                                            : "De 08 de janeiro a 03 de Março de 2026")}
-                                </span>*/}
+                                            ? "From July 10 to July 27, 2026"
+                                            : "De 10 a 27 de julho de 2026")}
+                                </span>}
                             
                             {/*<span className="badge-state-phase">
                                     {data.language === "es"
@@ -621,13 +621,13 @@ function BodyProcesoAdmision(data) {
                                 </ul>
                             
                             {/* activar fechas*/}
-                            {/*<span className="text-date-phase mb-4">
+                            {<span className="text-date-phase mb-4">
                                     {data.language === "es"
-                                        ? "Del 04 de marzo al 13 de marzo 2026"
+                                        ? "Del 28 de julio al 7 de agosto del  2026"
                                         : (data.language === "en"
-                                            ? "04 March to 13 March 2026"
-                                            : "04 de Março a 13 de Março de 2026")}
-                                </span>*/}
+                                            ? "From July 28 to August 7, 2026"
+                                            : "De 28 de julho a 7 de agosto de 2026")}
+                                </span>}
                             
                             
                                 {/*<span className="badge-state-phase">
@@ -920,6 +920,23 @@ function BodyProcesoAdmision(data) {
                                 </ul>
                             
                             {/*activar fechas*/}
+
+                            <span className="text-date-phase mb-4">
+                                {data.language === "es"
+                                    ? "Primera postulación, del 11 al 12 de agosto del 2026"
+                                    : (data.language === "en"
+                                        ? "First application period, From August 11th to 12th, 2026"
+                                        : "Primeiro período de inscrição: De 11 a 12 de agosto de 2026")}
+                            </span>
+                        
+                            <span className="text-date-phase mb-4">
+                                {data.language === "es"
+                                    ? "Primera asignación, 13 de agosto del 2026"
+                                    : (data.language === "en"
+                                        ? "First assignment, August 13 2026"
+                                        : "Primeira atribuição, 13 de agosto de 2026")}
+                            </span>
+                            
                             
                             {/*<span className="text-date-phase mb-4">
                                     {data.language === "es"
@@ -1098,13 +1115,13 @@ function BodyProcesoAdmision(data) {
                                                 : "Se o candidato não aceitar uma vaga atribuída, ela será considerada rejeitada e a vaga será liberada para outro candidato que cumpra com a pontuação necessária.")}
                                     </li>
                                 </ul>
-                               {/* <span className="text-date-phase mb-4">
+                               { <span className="text-date-phase mb-4">
                                     {data.language === "es"
-                                        ? "Primera aceptación, 9 al 12 de abril de 2026"
+                                        ? "Primera aceptación, 14 al 16 de agosto de 2026"
                                         : (data.language === "en"
-                                            ? "First acceptance, 9 to 12 April 2026"
-                                            : "Primeira aceitação, 9 a 12 de abril de 2026")}
-                                </span>*/}
+                                            ? "First acceptance, 14 to 16 August 2026"
+                                            : "Primeira aceitação, 14 a 16 de agosto de 2026")}
+                                </span>}
                             
                             {/*activar fechas */}
                             

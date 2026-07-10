@@ -253,6 +253,21 @@ function BodyCarrera(data) {
                                                 </>) : ""
                                             )))
                                         }
+                                        {
+                                            (data.language === "es" ? (
+                                                (data.career.crHorarios !== null && data.career.crHorarios !== '') ? (<>
+                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crHorarios.trim())}></div>
+                                                </>) : ""
+                                            ) : (data.language === "en" ? (
+                                                (data.career.crHorariosEn !== null && data.career.crHorariosEn !== '') ? (<>
+                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crHorariosEn.trim())}></div>
+                                                </>) : ""
+                                            ) : (
+                                                (data.career.crHorariosPt !== null && data.career.crHorariosPt !== '') ? (<>
+                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crHorariosPt.trim())}></div>
+                                                </>) : ""
+                                            )))
+                                        }
                                     </div>
                                     <div className="col-md-5"></div>
                                     <div className="col-md-12">
