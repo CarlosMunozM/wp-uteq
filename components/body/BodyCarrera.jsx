@@ -1,8 +1,8 @@
 import { Tabs, Tab, SSRProvider } from "react-bootstrap";
 import DOMPurify from 'isomorphic-dompurify';
 import {
-    apiUrl, CAREER_ACADEMIC_IMGS_FOLDER, FORMATS_DOCS_FOLDER, CAREER_PROMOTION_IMGS_FOLDER, CAREER_PROMOTION_DOCS_FOLDER, 
-    WS_LIST_SHORT_FILES_FORMTS_UNIV_BY_TYPE_LANG
+    apiUrl, CAREER_ACADEMIC_IMGS_FOLDER, FORMATS_DOCS_FOLDER, CAREER_PROMOTION_IMGS_FOLDER, CAREER_PROMOTION_DOCS_FOLDER,
+    WS_LIST_SHORT_FILES_FORMTS_UNIV_BY_TYPE_LANG, LOGOS_BG_FOLDER
 } from 'config';
 import ReactPlayer from "react-player";
 import * as htmlToImage from 'html-to-image';
@@ -176,7 +176,7 @@ function BodyCarrera(data) {
                         <div className="row">
                             {
                                 (data.career !== null && data.career !== '') && (<>
-                                	{
+                                    {
                                         (data.career.crUrlPagInsc !== "#") ? (<>
                                             <div className="col-md-12 w-100 mt-3 mb-3">
                                                 <a href={data.career.crUrlPagInsc} target="_blank" className="link-text-local" data-toggle="tooltip" data-placement="bottom" title={data.language === "es" ? "Ir a la página web de Inscripción" : (data.language === "en" ? "Go to the Registration webpage" : "Acesse o site de registro")}>
@@ -187,87 +187,103 @@ function BodyCarrera(data) {
                                             </div>
                                         </>) : ""
                                     }
-                                    <div className="col-md-12">
-                                        {
-                                            (data.language === "es" ? (
-                                                (data.career.crDenom !== null && data.career.crDenom !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDenom.trim())}></div>
-                                                </>) : ""
-                                            ) : (data.language === "en" ? (
-                                                (data.career.crDenomEn !== null && data.career.crDenomEn !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDenomEn.trim())}></div>
-                                                </>) : ""
-                                            ) : (
-                                                (data.career.crDenomPt !== null && data.career.crDenomPt !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDenomPt.trim())}></div>
-                                                </>) : ""
-                                            )))
+                                    {/* <div className="col-md-12"> */}
+                                    <div className="row">
+                                        <div className="col-md-7">
+                                            {
+                                                (data.language === "es" ? (
+                                                    (data.career.crDenom !== null && data.career.crDenom !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDenom.trim())}></div>
+                                                    </>) : ""
+                                                ) : (data.language === "en" ? (
+                                                    (data.career.crDenomEn !== null && data.career.crDenomEn !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDenomEn.trim())}></div>
+                                                    </>) : ""
+                                                ) : (
+                                                    (data.career.crDenomPt !== null && data.career.crDenomPt !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDenomPt.trim())}></div>
+                                                    </>) : ""
+                                                )))
+                                            }
+                                            {
+                                                (data.career.crAprobCES !== null && data.career.crAprobCES !== '') && (<>
+                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crAprobCES.replace("Aprobación CES", (data.language === "es" ? "Aprobación CES" : (data.language === "en" ? "CES Approval" : "Aprovação do CES"))))}></div>
+                                                </>)
+                                            }
+                                            {
+                                                (data.language === "es" ? (
+                                                    (data.career.crTitAcad !== null && data.career.crTitAcad !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crTitAcad.trim())}></div>
+                                                    </>) : ""
+                                                ) : (data.language === "en" ? (
+                                                    (data.career.crTitAcadEn !== null && data.career.crTitAcadEn !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crTitAcadEn.trim())}></div>
+                                                    </>) : ""
+                                                ) : (
+                                                    (data.career.crTitAcadPt !== null && data.career.crTitAcadPt !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crTitAcadPt.trim())}></div>
+                                                    </>) : ""
+                                                )))
+                                            }
+                                            {
+                                                (data.language === "es" ? (
+                                                    (data.career.crModald !== null && data.career.crModald !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crModald.trim())}></div>
+                                                    </>) : ""
+                                                ) : (data.language === "en" ? (
+                                                    (data.career.crModaldEn !== null && data.career.crModaldEn !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crModaldEn.trim())}></div>
+                                                    </>) : ""
+                                                ) : (
+                                                    (data.career.crModaldPt !== null && data.career.crModaldPt !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crModaldPt.trim())}></div>
+                                                    </>) : ""
+                                                )))
+                                            }
+                                            {
+                                                (data.language === "es" ? (
+                                                    (data.career.crHorarios !== null && data.career.crHorarios !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crHorarios.trim())}></div>
+                                                    </>) : ""
+                                                ) : (data.language === "en" ? (
+                                                    (data.career.crHorariosEn !== null && data.career.crHorariosEn !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crHorariosEn.trim())}></div>
+                                                    </>) : ""
+                                                ) : (
+                                                    (data.career.crHorariosPt !== null && data.career.crHorariosPt !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crHorariosPt.trim())}></div>
+                                                    </>) : ""
+                                                )))
+                                            }
+                                            {
+                                                (data.language === "es" ? (
+                                                    (data.career.crDurac !== null && data.career.crDurac !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDurac.trim())}></div>
+                                                    </>) : ""
+                                                ) : (data.language === "en" ? (
+                                                    (data.career.crDuracEn !== null && data.career.crDuracEn !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDuracEn.trim())}></div>
+                                                    </>) : ""
+                                                ) : (
+                                                    (data.career.crDuracPt !== null && data.career.crDuracPt !== '') ? (<>
+                                                        <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDuracPt.trim())}></div>
+                                                    </>) : ""
+                                                )))
+                                            }
+
+                                        </div>
+                                        <div className="col-md-5 d-flex justify-content-center align-items-start">                                            {
+                                            /* !! sirve para forzar la conversión a booleano*/
+                                            !!data.career.crIngresoDirecto && (
+                                                <div className="w-75"> {/* w-75 limita el ancho al 75% de la columna */}                                                    <img
+                                                    src={LOGOS_BG_FOLDER + 'logo-sin-pre-uteq.png'}
+                                                    className="img-fluid"
+                                                    alt="Ingreso Directo - Sin Preuniversitario"
+                                                />
+                                                </div>
+                                            )
                                         }
-                                        {
-                                            (data.career.crAprobCES !== null && data.career.crAprobCES !== '') && (<>
-                                                <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crAprobCES.replace("Aprobación CES", (data.language === "es" ? "Aprobación CES" : (data.language === "en" ? "CES Approval" : "Aprovação do CES"))))}></div>
-                                            </>)
-                                        }
-                                        {
-                                            (data.language === "es" ? (
-                                                (data.career.crTitAcad !== null && data.career.crTitAcad !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crTitAcad.trim())}></div>
-                                                </>) : ""
-                                            ) : (data.language === "en" ? (
-                                                (data.career.crTitAcadEn !== null && data.career.crTitAcadEn !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crTitAcadEn.trim())}></div>
-                                                </>) : ""
-                                            ) : (
-                                                (data.career.crTitAcadPt !== null && data.career.crTitAcadPt !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crTitAcadPt.trim())}></div>
-                                                </>) : ""
-                                            )))
-                                        }
-                                        {
-                                            (data.language === "es" ? (
-                                                (data.career.crModald !== null && data.career.crModald !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crModald.trim())}></div>
-                                                </>) : ""
-                                            ) : (data.language === "en" ? (
-                                                (data.career.crModaldEn !== null && data.career.crModaldEn !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crModaldEn.trim())}></div>
-                                                </>) : ""
-                                            ) : (
-                                                (data.career.crModaldPt !== null && data.career.crModaldPt !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crModaldPt.trim())}></div>
-                                                </>) : ""
-                                            )))
-                                        }
-                                        {
-                                            (data.language === "es" ? (
-                                                (data.career.crHorarios !== null && data.career.crHorarios !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crHorarios.trim())}></div>
-                                                </>) : ""
-                                            ) : (data.language === "en" ? (
-                                                (data.career.crHorariosEn !== null && data.career.crHorariosEn !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crHorariosEn.trim())}></div>
-                                                </>) : ""
-                                            ) : (
-                                                (data.career.crHorariosPt !== null && data.career.crHorariosPt !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crHorariosPt.trim())}></div>
-                                                </>) : ""
-                                            )))
-                                        }
-                                        {
-                                            (data.language === "es" ? (
-                                                (data.career.crDurac !== null && data.career.crDurac !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDurac.trim())}></div>
-                                                </>) : ""
-                                            ) : (data.language === "en" ? (
-                                                (data.career.crDuracEn !== null && data.career.crDuracEn !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDuracEn.trim())}></div>
-                                                </>) : ""
-                                            ) : (
-                                                (data.career.crDuracPt !== null && data.career.crDuracPt !== '') ? (<>
-                                                    <div className="paragraph-cont" dangerouslySetInnerHTML={sanitizedData(data.career.crDuracPt.trim())}></div>
-                                                </>) : ""
-                                            )))
-                                        }
+                                        </div>
                                     </div>
                                     <div className="col-md-5"></div>
                                     <div className="col-md-12">

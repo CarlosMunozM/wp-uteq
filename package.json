@@ -3,9 +3,9 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start"
+        "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider next dev",
+        "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider next build",
+        "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider next start"
     },
     "dependencies": {
         "@hookform/resolvers": "^2.0.0",
@@ -44,6 +44,7 @@
         "yup": "^0.32.9"
     },
     "devDependencies": {
+        "cross-env": "^10.1.0",
         "file-loader": "^6.2.0"
     }
 }
