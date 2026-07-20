@@ -32,69 +32,69 @@ function BodyAdmision2(data) {
             <div className="hero-wrap" style={{ backgroundImage: `url(${IMAGES_ADMISSION_FOLDER}background-principal-4.webp)` }}>
                 <div className="container-fluid p-0">
                     <div className="row g-0 slider-text align-items-center justify-content-end" data-scrollax-parent="true">
-                        
-                    {/**/
-                    
-                    <div className="col-10 col-sm-10 col-md-5 ftco-animate custom-left-column p-4 me-md-2 mx-auto">
-                            <h1 className="mb-4">
-                                <span>
+
+                        {/**/
+
+                            <div className="col-10 col-sm-10 col-md-5 ftco-animate custom-left-column p-4 me-md-2 mx-auto">
+                                <h1 className="mb-4">
+                                    <span>
+                                        {data.language === "es"
+                                            ? "Fase 1"
+                                            : (data.language === "en"
+                                                ? "Phase 1"
+                                                : "Fase 1")}
+                                    </span>
                                     {data.language === "es"
-                                        ? "Fase 1"
-                                        : (data.language === "en"       
-                                            ? "Phase 1"
-                                            : "Fase 1")}
-                                </span>
-                                {data.language === "es"
-                                    ? "Registro de inscripción en la UTEQ"
-                                    : (data.language === "en"
-                                        ? "Registration with the UTEQ"
-                                        : "Registro de inscrição na UTEQ")}
-                            </h1>
-                            <p className="mb-3">
-                                {data.language === "es"
-                                    ? "Para continuar en esta fase, debes haber realizado el Registro Nacional Único del MINEDEC."
-                                    : (data.language === "en"
-                                        ? "To proceed to this stage, you must have completed the MINEDEC Single National Register."
-                                        : "Para prosseguir nesta fase, você deve ter se cadastrado no Registro Nacional Único do MINEDEC.")}
-                            </p>
-                            <p className="mb-4 fw-bold">
-                                {data.language === "es"
-                                    ? "Del 30 de junio al 20 de julio de 2026"
-                                    : (data.language === "en"
-                                        ? "From 30 June to 20 July 2026"
-                                        : "De 30 de junho a 20 de julho de 2026")}
-                            </p>
-                            <p className="mb-4 fw-bold">
-                                {data.language === "es"
-                                    ? "La fase iniciará próximamente"
-                                    : (data.language === "en"
-                                        ? "The phase will begin shortly"
-                                        : "A fase terá início em breve")}
-                            </p>
-                        	
-                        	<a
-                                href="https://postulate.uteq.edu.ec/registroadmision?id=OPPQQRRSSTTUUVVWWXWY"
-                                className="btn-admission-2 mr-md-4 py-3 px-4"
-                                aria-label={
-                                    data.language === "es"
-                                        ? "Ir a la página web del Registro Nacional"
+                                        ? "Registro de inscripción en la UTEQ"
                                         : (data.language === "en"
-                                            ? "Go to the National Registration website"
-                                            : "Ir ao site do Registro Nacional")
-                                }
-                            >
-                                {data.language === "es"
-                                    ? "Accede aquí"
-                                    : (data.language === "en"
-                                        ? "Click here"
-                                        : "Acesse aqui")}
-                                <i className="fa fa-play-circle" aria-hidden="true"></i>
-                            </a>
-                        
-                        </div>
-                        
+                                            ? "Registration with the UTEQ"
+                                            : "Registro de inscrição na UTEQ")}
+                                </h1>
+                                <p className="mb-3">
+                                    {data.language === "es"
+                                        ? "Para continuar en esta fase, debes haber realizado el Registro Nacional Único del MINEDEC."
+                                        : (data.language === "en"
+                                            ? "To proceed to this stage, you must have completed the MINEDEC Single National Register."
+                                            : "Para prosseguir nesta fase, você deve ter se cadastrado no Registro Nacional Único do MINEDEC.")}
+                                </p>
+                                <p className="mb-4 fw-bold">
+                                    {data.language === "es"
+                                        ? "Del 30 de junio al 20 de julio de 2026"
+                                        : (data.language === "en"
+                                            ? "From 30 June to 20 July 2026"
+                                            : "De 30 de junho a 20 de julho de 2026")}
+                                </p>
+                                <p className="mb-4 fw-bold">
+                                    {data.language === "es"
+                                        ? "La fase iniciará próximamente"
+                                        : (data.language === "en"
+                                            ? "The phase will begin shortly"
+                                            : "A fase terá início em breve")}
+                                </p>
+
+                                <a
+                                    href="https://postulate.uteq.edu.ec/registroadmision?id=OPPQQRRSSTTUUVVWWXWY"
+                                    className="btn-admission-2 mr-md-4 py-3 px-4"
+                                    aria-label={
+                                        data.language === "es"
+                                            ? "Ir a la página web del Registro Nacional"
+                                            : (data.language === "en"
+                                                ? "Go to the National Registration website"
+                                                : "Ir ao site do Registro Nacional")
+                                    }
+                                >
+                                    {data.language === "es"
+                                        ? "Accede aquí"
+                                        : (data.language === "en"
+                                            ? "Click here"
+                                            : "Acesse aqui")}
+                                    <i className="fa fa-play-circle" aria-hidden="true"></i>
+                                </a>
+
+                            </div>
+
                         /* */}
-                    
+
                         <div className="col-10 col-sm-10 col-md-6 ftco-animate ms-md-4 mx-auto mb-sm-5 mt-sm-2">
                             <h1 className="mb-4">
                                 {data.language === "es"
@@ -102,7 +102,7 @@ function BodyAdmision2(data) {
                                     : (data.language === "en"
                                         ? "Your university adventure"
                                         : "Sua aventura universitária")}
-                                <br/><span>
+                                <br /><span>
                                     {data.language === "es"
                                         ? "comienza aquí"
                                         : (data.language === "en"
@@ -197,7 +197,7 @@ function BodyAdmision2(data) {
                                 </div>
                             </div>
                         </div>*/}
-						
+
                         <div className="col-xs-8 col-md-8 col-lg-8 mt-sm-3 mt-3 column-image-s2">
                             <h2 className='text-sm-center text-xs-center'>
                                 {data.language === "es"
@@ -580,42 +580,74 @@ function BodyAdmision2(data) {
                         {/* Primer fila de videos */}
                         <div className="col-6 col-sm-6 col-md-3 col-lg-3 mb-4">
                             <div className="ratio vertical">
-                                <iframe
-                                    src={`${IMAGES_ADMISSION_FOLDER}video-uteq-6.mp4`}
+
+                                <video controls muted playsInline preload="metadata" className="w-100 h-100">
+                                    <source src={`${VIDEOS_FOLDER}video-uteq-6.mp4`} type="video/mp4" />
+                                </video>
+
+                                {/*
+                                    <iframe
+                                    //src={`${IMAGES_ADMISSION_FOLDER}video-uteq-6.mp4`}
+                                    src={`${VIDEOS_FOLDER}video-uteq-6.mp4`}
                                     title="Video 1"
                                     allowFullScreen
-                                	sandbox=""
-                                ></iframe>
+                                    sandbox=""></iframe>
+                                */}
+
                             </div>
                         </div>
                         <div className="col-6 col-sm-6 col-md-3 col-lg-3 mb-4">
                             <div className="ratio vertical">
+
+                                <video controls muted playsInline preload="metadata" className="w-100 h-100">
+                                    <source src={`${VIDEOS_FOLDER}video-uteq-5.mp4`} type="video/mp4" />
+                                </video>
+
+                                {/*
                                 <iframe
-                                    src={`${IMAGES_ADMISSION_FOLDER}video-uteq-5.mp4`}
-                                    title="Video 2"
+                                    //src={`${IMAGES_ADMISSION_FOLDER}video-uteq-5.mp4`}
+                                    src={`${VIDEOS_FOLDER}video-uteq-5.mp4`}
+                                    title="Video 1"
                                     allowFullScreen
-                                	sandbox=""
-                                ></iframe>
+                                    sandbox=""></iframe>
+                                */}
+
                             </div>
                         </div>
                         <div className="col-6 col-sm-6 col-md-3 col-lg-3 mb-4">
                             <div className="ratio vertical">
+
+                                <video controls muted playsInline preload="metadata" className="w-100 h-100">
+                                    <source src={`${VIDEOS_FOLDER}video-uteq-2.mp4`} type="video/mp4" />
+                                </video>
+
+                                {/*
                                 <iframe
-                                    src={`${IMAGES_ADMISSION_FOLDER}video-uteq-2.mp4`}
+                                    //src={`${IMAGES_ADMISSION_FOLDER}video-uteq-2.mp4`}
+                                    src={`${VIDEOS_FOLDER}video-uteq-2.mp4`}
                                     title="Video 3"
                                     allowFullScreen
-                                	sandbox=""
-                                ></iframe>
+                                    sandbox=""></iframe>
+                                */}
+
                             </div>
                         </div>
                         <div className="col-6 col-sm-6 col-md-3 col-lg-3 mb-4">
                             <div className="ratio vertical">
+
+                                <video controls muted playsInline preload="metadata" className="w-100 h-100">
+                                    <source src={`${VIDEOS_FOLDER}video-uteq-3.mp4`} type="video/mp4" />
+                                </video>
+
+                                {/*
                                 <iframe
-                                    src={`${IMAGES_ADMISSION_FOLDER}video-uteq-3.mp4`}
+                                    //src={`${IMAGES_ADMISSION_FOLDER}video-uteq-3.mp4`}
+                                    src={`${VIDEOS_FOLDER}video-uteq-3.mp4`}
                                     title="Video 4"
                                     allowFullScreen
-                                	sandbox=""
+                                    sandbox=""
                                 ></iframe>
+                                */}
                             </div>
                         </div>
                     </div>
