@@ -12,8 +12,8 @@ const Noticia = (props) => {
 export default Noticia;
 
 async function make_request_ws(path_url) {
-    var listTemp=null;
-	const https = require('https');
+    var listTemp = null;
+    const https = require('https');
     const agent = new https.Agent({
         rejectUnauthorized: false
     });
@@ -48,6 +48,13 @@ export const getStaticProps = async ({ params, locale }) => {
     const resVideoWeek = await make_request_ws(WS_LIST_VIDEOS_WEEK);
     const resNewspapersWeek = await make_request_ws(`${WS_LIST_NEWSPAPERS_MONTH}1`);
 
+    // Si la noticia no existe en la BD, devolvemos 404
+    if (!resInfoNews || !resInfoNews.data) {
+        return {
+            notFound: true
+        };
+    }
+
     return {
         props: {
             option: 37,
@@ -56,13 +63,14 @@ export const getStaticProps = async ({ params, locale }) => {
             infonews: resInfoNews.data,
             data5: resVideoWeek.data,
             data6: resNewspapersWeek.data,
-            titlepage: (resInfoNews.data !== null ? (locale==="es"?resInfoNews.data.ntTitular.trim():(locale==="en"?resInfoNews.data.ntTitularEn.trim():resInfoNews.data.ntTitularPt.trim())) : 'UTEQ'),
-            descpage: ((locale==="es"?"Sitio web de noticia - ":(locale==="en"?"News website - ":"Sítio Web de notícias - ")) + (resInfoNews.data !== null ? (locale==="es"?resInfoNews.data.ntTitular.trim():(locale==="en"?resInfoNews.data.ntTitularEn.trim():resInfoNews.data.ntTitularPt.trim())) : 'UTEQ')),
+            titlepage: (resInfoNews.data !== null ? (locale === "es" ? resInfoNews.data.ntTitular.trim() : (locale === "en" ? resInfoNews.data.ntTitularEn.trim() : resInfoNews.data.ntTitularPt.trim())) : 'UTEQ'),
+            descpage: ((locale === "es" ? "Sitio web de noticia - " : (locale === "en" ? "News website - " : "Sítio Web de notícias - ")) + (resInfoNews.data !== null ? (locale === "es" ? resInfoNews.data.ntTitular.trim() : (locale === "en" ? resInfoNews.data.ntTitularEn.trim() : resInfoNews.data.ntTitularPt.trim())) : 'UTEQ')),
             urlpageweb: (resInfoNews.data !== null ? (`${apiUrl}/${locale}/comunicacion/noticia/${resInfoNews.data.ntUrlNoticia.trim()}`) : `${apiUrl}/${locale}`),
-            urlimage: (resInfoNews.data !== null ? (`/assets/images/news/pagina/${resInfoNews.data.ntUrlPortada.trim()}`) : `/assets/img/${locale==="es"?"imagen_noticias_uteq_es.jpg":(locale==="en"?"imagen_noticias_uteq_en.jpg":"imagen_noticias_uteq_pt.jpg")}`),
+            urlimage: (resInfoNews.data !== null ? (`/assets/images/news/pagina/${resInfoNews.data.ntUrlPortada.trim()}`) : `/assets/img/${locale === "es" ? "imagen_noticias_uteq_es.jpg" : (locale === "en" ? "imagen_noticias_uteq_en.jpg" : "imagen_noticias_uteq_pt.jpg")}`),
             codpage: '755bdb85-b1a3-4960-a38c-37f3fdee3273',
             language: locale,
-        }
+        },
+        revalidate: 300 // Revalida en segundo plano cada 5 minutos (300 segundos)
     };
 
 };
@@ -86,7 +94,7 @@ export async function getStaticPaths({ locales }) {
 
     return {
         paths,
-        fallback: false
+        fallback: 'blocking'//false
     }
 
 }
