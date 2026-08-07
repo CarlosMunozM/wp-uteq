@@ -21,7 +21,7 @@ const listItemsCareers = (dataItems, language) => {
             })
     }</>)
 }
-
+/*
 function ItemCareer(props) {
     return (<div className="col-6 col-md-4 mb-2">
         <div className="pnl-career-box-group">
@@ -33,6 +33,146 @@ function ItemCareer(props) {
             </a>
         </div>
     </div>)
+}
+    */
+
+function ItemCareer(props) {
+    const { language, urlparcial, titletaga, urlimage, description, namecareer } = props;
+
+    return (
+        <div className="career-item mb-4">
+            <style>{`
+        .career-card-link {
+          text-decoration: none !important;
+          color: inherit;
+          display: block;
+        }
+
+        .career-card {
+          background: #ffffff;
+          border-radius: 14px;
+          border: 1px solid #e2e8f0;
+          overflow: hidden;
+          transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .career-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 14px 28px rgba(0, 90, 43, 0.25);
+          border-color: #ffcc00; /* Borde amarillo al pasar el cursor */
+        }
+
+        /* 1. Contenedor de la Imagen */
+        .career-img-wrapper{
+            width:100%;
+            aspect-ratio: 4 / 3;   /* o 5/4, según tus imágenes */
+            overflow:hidden;
+        }
+
+                .career-img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            object-position:center;
+        }
+
+        .career-card:hover .career-img {
+          transform: scale(1.05);
+        }
+
+        /* 2. Bloque del título con Gradiente Verde e Identidad */
+        .career-card-body {
+          position: relative;
+          background: linear-gradient(135deg, #004d25 0%, #006a33 100%); /* Verde institucional degradado */
+          padding: 8px 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 40px;
+          text-align: center;
+          transition: all 0.3s ease;
+          border-top: 3px solid #ffcc00; /* Línea acento en amarillo institucional */
+        }
+
+        /* Efecto hover: El bloque se ilumina con detalles amarillos */
+        .career-card:hover .career-card-body {
+          background: linear-gradient(135deg, #003b1c 0%, #005227 100%);
+          border-top: 3px solid #ffe066;
+        }
+
+        /* 3. Tipografía con estilo moderno */
+        .career-title {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: #ffffff;
+          margin: 0;
+          line-height: 1.25;
+          letter-spacing: 0.2px;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+          transition: color 0.3s ease;
+        }
+
+        /* En hover, el nombre toma un tono dorado/amarillo brillante */
+        .career-card:hover .career-title {
+          color: #ffeb80; 
+        }
+
+        .career-item{
+            width: 50%;
+            padding: 0 .5rem;
+        }
+
+        @media (min-width:768px){
+            .career-item{
+                width:33.333%;
+            }
+        }
+
+        @media (min-width:1200px){
+            .career-item{
+                width:20%;   /* 5 tarjetas */
+            }
+        }
+
+        /* si quieres 6 tarjetas */
+        @media (min-width:1600px){
+            .career-item{
+                width:16.666%;
+            }
+        }
+      `}</style>
+
+            <a
+                href={`/${language}/grado/carrera/${urlparcial}`}
+                className="career-card-link"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title={titletaga}
+            >
+                <div className="career-card">
+
+                    {/* Imagen encuadrada */}
+                    <div className="career-img-wrapper">
+                        <img
+                            src={IMG_PORTRAIT_WEB_PAGE_CAREERS + urlimage}
+                            alt={description || namecareer}
+                            className="career-img"
+                        />
+                    </div>
+
+                    {/* Bloque moderno del Nombre de la Carrera */}
+                    <div className="career-card-body">
+                        <h3 className="career-title">{namecareer}</h3>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    );
 }
 
 /*

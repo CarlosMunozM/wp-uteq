@@ -57,7 +57,7 @@ export const getStaticProps = async ({ locale }) => {
             option: 53,
             campus: resDataGeneral.data,
             sidemenu: resSideMenu.data,
-            titlepage: (locale==="es"?"Bolsa de empleos":(locale==="en"?"Job opportunities":"Oportunidades de emprego")),
+            titlepage: (locale==="es"?"Bolsa de empleo":(locale==="en"?"Job opportunities":"Oportunidades de emprego")),
             descpage: (locale==="es"?"Sitio web de información sobre ofertas de empleos de empresas":(locale==="en"?"Information website on job vacancies in companies":"Sítio de informação sobre ofertas de emprego em empresas")),
             urlpageweb: `${apiUrl}/${locale}/vinculacion/bolsa-de-empleos`,
             urlimage: `${FRONT_PG_IMGS_FOLDER}${locale==="es"?"imagen_bolsa_de_empleo_uteq_es.jpg":(locale==="en"?"imagen_bolsa_de_empleo_uteq_en.jpg":"imagen_bolsa_de_empleo_uteq_pt.jpg")}`,

@@ -1,7 +1,9 @@
 import { Tabs, Tab, SSRProvider } from "react-bootstrap";
 import DOMPurify from 'isomorphic-dompurify';
-import { PHOTOS_FOLDER, DOCS_LINK_GRAD_FOLDER, WS_LIST_FILES_UNIV_BY_TYPE, IMG_GENERAL_UNIVS_FOLDER,
-       IMG_SECTION_GRADUATED_FOLLOW_FOLDER, DOC_SECTION_GRADUATED_FOLLOW_FOLDER} from 'config';
+import {
+    PHOTOS_FOLDER, DOCS_LINK_GRAD_FOLDER, WS_LIST_FILES_UNIV_BY_TYPE, IMG_GENERAL_UNIVS_FOLDER,
+    IMG_SECTION_GRADUATED_FOLLOW_FOLDER, DOC_SECTION_GRADUATED_FOLLOW_FOLDER
+} from 'config';
 //import DataTable from 'react-data-table-component';
 import React, { useState, useEffect, useMemo } from "react";
 import axios from 'axios';
@@ -330,7 +332,7 @@ function BodySegGraduados(data) {
                                 </div>
                             </div>
                         </div>
-                    	{
+                        {
                             (data.data8 !== null && data.data8 !== "") && (
                                 <div className="col-md-12 w-100 paragraph-cont" dangerouslySetInnerHTML={sanitizedData((data.language === "es" ? (data.data8.pwEventos !== null ? data.data8.pwEventos : '') :
                                     (data.language === "en" ? (data.data8.pwEventosEn !== null ? data.data8.pwEventosEn : '') : (data.data8.pwEventosPt !== null ? data.data8.pwEventosPt : ''))) +
@@ -340,7 +342,7 @@ function BodySegGraduados(data) {
                                         (data.data8.pwObjetivosPt !== null ? data.data8.pwObjetivosPt : ''))))}></div>
                             )
                         }
-                    	<div className="row g-0 w-100 mt-4">
+                        <div className="row g-0 w-100 mt-4">
                             <div className="col-lg-4 mx-auto">
                                 <div className="item item-sld-mult">
                                     <div className="work">
@@ -373,14 +375,18 @@ function BodySegGraduados(data) {
                             </div>
                         </div>
                         <div className="row w-100">
-                            <h2 className="title-cont-page mt-4">{data.language === "es" ? "Casos de éxito" : (data.language === "en" ? "Success stories" : "Histórias de sucesso")}</h2>
-                            {
-                                (data.testimonials !== null && data.testimonials !== "") && (
-                                    data.testimonials.length > 0 && listItemsTestimonials(data.testimonials))
-                            }
+                            {(data.testimonials?.length > 0) && (
+                                <>
+                                    <h2 className="title-cont-page mt-4">
+                                        {data.language === "es" ? "Casos de éxito" : data.language === "en" ? "Success stories" : "Histórias de sucesso"}
+                                    </h2>
+
+                                    {listItemsTestimonials(data.testimonials)}
+                                </>
+                            )}
                         </div>
                     </Tab>
-                	<Tab eventKey={1} title={data.language === "en" ? "Events" : "Eventos"}>
+                    <Tab eventKey={1} title={data.language === "en" ? "Events" : "Eventos"}>
                         <div className="col-md-12 w-100 mt-1">
                             <div className="row">
                                 <div className="col-md-6 mb-3">
@@ -441,7 +447,7 @@ function BodySegGraduados(data) {
                             </div>
                         </div>
                     </Tab>
-                {/*<Tab eventKey={2} title={data.language === "es" ? "Informes" : (data.language === "en" ? "Reports" : "Relatórios")}>
+                    {/*<Tab eventKey={2} title={data.language === "es" ? "Informes" : (data.language === "en" ? "Reports" : "Relatórios")}>
                         <div className="col-md-12 w-100 mt-1">
                             <DataTable
                                 columns={columns(data.language)}

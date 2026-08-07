@@ -747,13 +747,13 @@ function BodyProcesoAdmision(data) {
                                 </p>
                             {/*activar fechas*/}    
                             
-                            {/*<span className="text-date-phase mb-4">
+                            {<span className="text-date-phase mb-4">
                                     {data.language === "es"
-                                        ? "06 de abril 2026"
+                                        ? "11 de agosto desde las 16:00"
                                         : (data.language === "en"
-                                            ? "6th of April, 2026"
-                                            : "06 de abril de 2026")}
-                                </span>*/}
+                                            ? "August 11, starting at 4:00 p.m."
+                                            : "11 de agosto, a partir das 16h00")}
+                                </span>}
                                 
                                 <span className="badge-state-phase">
                                     {data.language === "es"
@@ -923,10 +923,10 @@ function BodyProcesoAdmision(data) {
 
                             <span className="text-date-phase mb-4">
                                 {data.language === "es"
-                                    ? "Primera postulación, del 11 al 12 de agosto del 2026"
+                                    ? "Primera postulación, desde las 16:00 del 11 al 12 de agosto del 2026"
                                     : (data.language === "en"
-                                        ? "First application period, From August 11th to 12th, 2026"
-                                        : "Primeiro período de inscrição: De 11 a 12 de agosto de 2026")}
+                                        ? "First application period: from 4:00 p.m. on August 11 through August 12, 2026"
+                                        : "Primeira fase de inscrições, das 16h do dia 11 ao dia 12 de agosto de 2026")}
                             </span>
                         
                             <span className="text-date-phase mb-4">

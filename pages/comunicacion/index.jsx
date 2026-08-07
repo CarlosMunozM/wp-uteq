@@ -70,7 +70,8 @@ export const getStaticProps = async ({ locale }) => {
             bannerimg: resInfoPageWeb.data.pwImgBanner.trim(),
             codpage: '755bdb85-b1a3-4960-a38c-37f3fdee3273',
             language: locale,
-        }
+        },
+        revalidate: 300 // Revalida en segundo plano cada 5 minutos (300 segundos)
     };
 
 };

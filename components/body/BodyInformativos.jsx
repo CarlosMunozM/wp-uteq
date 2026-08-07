@@ -227,6 +227,7 @@ function BodyInformativos(data) {
                 <a href="https://www.youtube.com/playlist?list=PLn-ZemkYzL41arJqFbwcityXr-DnwdZQF" target="_blank" className="btn-tp mr-2"><i className="fa fa-link"></i> {data.language === "es" ? "Ver más" : (data.language === "en" ? "See more" : "Ver mais")}</a>
             </div>
         </div><hr />
+        {/*
         <h2 className="title-cont-page text-center">{data.language === "es" ? "UTEQ Investiga" : (data.language === "en" ? "UTEQ Research" : "Investigação UTEQ")}</h2><br />
         {(listVidIV !== null && listVidIV !== "") ? SliderImg(listVidIV[0].dpListadoVideos, 25, 3000, 1000) : ""}<br />
         <div className="row justify-content-center pt-3">
@@ -234,6 +235,7 @@ function BodyInformativos(data) {
                 <a href="https://www.youtube.com/playlist?list=PLn-ZemkYzL41INEv4eLBmg3c7hFDwt25D" target="_blank" className="btn-tp mr-2"><i className="fa fa-link"></i> {data.language === "es" ? "Ver más" : (data.language === "en" ? "See more" : "Ver mais")}</a>
             </div>
         </div>
+        */}
     </>);
 
 }

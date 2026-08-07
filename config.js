@@ -17,8 +17,8 @@ const wsUrlCoopInt = 'https://apiws.uteq.edu.ec/uteq-coop'; */
 /* PRUEBAS */
 
 const wsUrl = 'http://localhost:8086/uteq-backend';
-const wsUrlCidu = 'http://localhost:8086/uteq-cidu';
-const wsUrlCoopInt = 'http://localhost:8086/uteq-coop';
+const wsUrlCidu = 'http://localhost:8088/uteq-cidu';
+const wsUrlCoopInt = 'http://localhost:8087/uteq-coop';
 
 /*const wsUrl = 'https://test1be.uteq.edu.ec/uteq-backend';
 const wsUrlCidu = 'https://test1be.uteq.edu.ec/uteq-cidu';

@@ -333,13 +333,13 @@ function SideMenu(data) {
                     (item) => <ElementVideo key={uuidv4()} value={item} />
                 ))
         }
-        {
+        {/*
             (data.option === 47 || data.option === 48 || data.option === 49 || data.option === 52 || data.option === 55 || data.option === 56 || data.option === 57 || data.option === 58 || data.option === 59 || data.option === 60 || data.option === 62 || data.option === 63 || data.option === 64 || data.option === 65 || data.option === 66 || data.option === 67 || data.option === 72) && dataVid.length > 0 && (
                 <div className="row g-0 mb-3"><h3 className="title-mn-secund">{router.locale === "es" ? "UTEQ Investiga" : (router.locale === "en" ? "UTEQ Research" : "Investigação UTEQ")}</h3>
                     {listItemsVideosInv(dataVid)}
                 </div>
             )
-        }
+        */}
 
     </>);
 }
