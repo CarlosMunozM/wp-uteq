@@ -1,7 +1,10 @@
 import { LayoutSecond } from 'components/layouts';
 import axios from 'axios';
-import { WS_LIST_VIDEOS_WEEK, WS_LIST_NEWSPAPERS_MONTH, WS_LIST_DATA_GENERAL_NUM1, WS_LIST_IMAGES_SLIDER, WS_INFORMATION_DEPARTAMENT, FRONT_PG_IMGS_FOLDER, 
-    apiUrl, WS_INFORMATION_JOB_AUTH_BY_DEPARTAMENT, WS_COUNT_AGREEMTS_4 ,WS_COUNT_AGREEMTS_5, WS_COUNT_AGREEMTS_6, WS_LIST_ITEMS_MENU_LAT_BY_LANG } from 'config';
+import {
+    WS_LIST_VIDEOS_WEEK, WS_LIST_NEWSPAPERS_MONTH, WS_LIST_DATA_GENERAL_NUM1, WS_LIST_IMAGES_SLIDER, WS_INFORMATION_DEPARTAMENT, FRONT_PG_IMGS_FOLDER,
+    apiUrl, WS_INFORMATION_JOB_AUTH_BY_DEPARTAMENT, WS_COUNT_AGREEMTS_4, WS_COUNT_AGREEMTS_5, WS_COUNT_AGREEMTS_6, WS_LIST_ITEMS_MENU_LAT_BY_LANG,
+    WS_LIST_FILTER_NEWS_BY_PARAMETERS, WS_LIST_ACTIVE_CATEGORIES
+} from 'config';
 
 const CooperacionInternacional = (props) => {
     return (
@@ -12,7 +15,7 @@ const CooperacionInternacional = (props) => {
 export default CooperacionInternacional;
 
 async function make_request_ws(path_url) {
-    var listTemp=null;
+    var listTemp = null;
     const https = require('https');
     const agent = new https.Agent({
         rejectUnauthorized: false
@@ -47,7 +50,7 @@ export const getStaticProps = async ({ locale }) => {
     const resVideoWeek = await make_request_ws(WS_LIST_VIDEOS_WEEK);
     const resNewspapersWeek = await make_request_ws(`${WS_LIST_NEWSPAPERS_MONTH}1`);
     const resDataGeneral = await make_request_ws(`${WS_LIST_DATA_GENERAL_NUM1}CAMPUS`);
-    const resSideMenu = await make_request_ws(`${WS_LIST_ITEMS_MENU_LAT_BY_LANG }22`);
+    const resSideMenu = await make_request_ws(`${WS_LIST_ITEMS_MENU_LAT_BY_LANG}22`);
     const resSlider = await make_request_ws(`${WS_LIST_IMAGES_SLIDER}SECUN/3`);
     const resInfoUniversity = await make_request_ws(`${WS_INFORMATION_DEPARTAMENT}06049e96-9678-11ec-9c80-244bfe557d55`);
     const resInfoAuthority = await make_request_ws(`${WS_INFORMATION_JOB_AUTH_BY_DEPARTAMENT}06049e96-9678-11ec-9c80-244bfe557d55/116`);
@@ -57,6 +60,8 @@ export const getStaticProps = async ({ locale }) => {
     const countAgI = await make_request_ws(`${WS_COUNT_AGREEMTS_5}2`);
     const countAgPB = await make_request_ws(`${WS_COUNT_AGREEMTS_6}NACIONAL`);
     const countAgPV = await make_request_ws(`${WS_COUNT_AGREEMTS_6}INTERNACIONAL`);
+    const resListNewsUniv = await make_request_ws(`${WS_LIST_FILTER_NEWS_BY_PARAMETERS}19/0`);
+    const resActvCategrs = await make_request_ws(WS_LIST_ACTIVE_CATEGORIES);
 
     return {
         props: {
@@ -74,13 +79,16 @@ export const getStaticProps = async ({ locale }) => {
             slider1: resSlider.data,
             data8: resInfoUniversity.data,
             authort: resInfoAuthority.data,
+            news: resListNewsUniv.data,
+            actcategrs: resActvCategrs.data,
             titlepage: (locale === "es" ? "Cooperación Internacional - UTEQ" : (locale === "en" ? 'International Cooperation - UTEQ' : 'Cooperação Internacional - UTEQ')),
             descpage: (locale === "es" ? "Sitio web de Cooperación Internacional de la UTEQ" : (locale === "en" ? 'UTEQ International Cooperation website' : 'Website de Cooperação Internacional da UTEQ')),
             urlpageweb: `${apiUrl}/${locale}/cooperacion-internacional`,
-            urlimage: `${FRONT_PG_IMGS_FOLDER}${locale==="es"?"imagen_cooperacion_internacional_uteq_es.jpg":(locale==="en"?"imagen_cooperacion_internacional_uteq_en.jpg":"imagen_cooperacion_internacional_uteq_pt.jpg")}`,
+            urlimage: `${FRONT_PG_IMGS_FOLDER}${locale === "es" ? "imagen_cooperacion_internacional_uteq_es.jpg" : (locale === "en" ? "imagen_cooperacion_internacional_uteq_en.jpg" : "imagen_cooperacion_internacional_uteq_pt.jpg")}`,
             bannerimg: resInfoUniversity.data.dpImgBanner.trim(),
             codpage: '06049e96-9678-11ec-9c80-244bfe557d55',
             language: locale
-        }
+        },
+        revalidate: 300 // Revalida en segundo plano cada 5 minutos (300 segundos)
     };
 };

@@ -265,7 +265,7 @@ function LayoutSecond(data) {
         <div className="container">
             <div className="row">
                 {
-                    (data.option !== 19 && data.option !== 45 && data.option !== 71 && data.option !== 73 && data.option !== 74 && data.option !== 75 && data.option !== 76 && data.option !== 21 && data.option !== 79 && data.option !== 80 && data.option !== 81 && data.option !== 82 && data.option !== 83) && (<>
+                    (data.option !== 19 && data.option !== 45 && data.option !== 71 && data.option !== 73 && data.option !== 74 && data.option !== 75 && data.option !== 76 && data.option !== 21 && data.option !== 79 && data.option !== 80 && data.option !== 81 && data.option !== 82 && data.option !== 83 && data.option !== 10) && (<>
                         <div className="col-md-12 col-lg-9">
                             {renderElementBodyPage(data)}
                             {(data.option === 47 || data.option === 48 || data.option === 49 || data.option === 52 || data.option === 55 || data.option === 56 || data.option === 57 || data.option === 58 || data.option === 59 || data.option === 60 || data.option === 62 || data.option === 63 || data.option === 64 || data.option === 65 || data.option === 66 || data.option === 67 || data.option === 72) && renderListMagazines(data.datamagz.filter(item => item.dmCodgDato !== 55), data.option, data.language)}
@@ -281,7 +281,7 @@ function LayoutSecond(data) {
                     </>)
                 }
                 {
-                    (data.option === 19 || data.option === 45 || data.option === 71 || data.option === 73 || data.option === 21) && (<>
+                    (data.option === 19 || data.option === 45 || data.option === 71 || data.option === 73 || data.option === 21 || data.option === 10) && (<>
                         <div className="col-md-12 col-lg-12">
                             {renderElementBodyPage(data)}
                             <br /><br /><div className="row">
