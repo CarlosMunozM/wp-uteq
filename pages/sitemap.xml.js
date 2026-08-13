@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 
-const Sitemap = () => {};
+const Sitemap = () => { };
 
 async function make_request_ws(path_url) {
     var listTemp = null;
@@ -103,7 +103,9 @@ export const getServerSideProps = async ({ res }) => {
     const rs_projsv = await make_request_ws(WS_LIST_URLS_PROJECTS_LKG);
 
     const pgs_news = rs_news.data.map(news => {
-        return `${apiUrl}/comunicacion/noticia/${news.ntUrlNoticia.trim()}`
+        //return `${apiUrl}/comunicacion/noticia/${news.ntUrlNoticia.trim()}`
+        const url = (typeof news === 'string') ? news : news.ntUrlNoticia;
+        return `${apiUrl}/comunicacion/noticia/${url.trim()}`
     });
     const pgs_ev_int = rs_ev_int.data.map(ev_int => {
         return `${apiUrl}/evaluacion-interna/${ev_int.pwUrlPag.trim()}`

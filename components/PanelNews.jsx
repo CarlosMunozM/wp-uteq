@@ -61,9 +61,43 @@ function NewsPanelForPage(props) {
                             <div className="card-nw-bdy">
                                 <div className="pnl-franja g-0 w-100 mt-2"></div>
                                 <h2 className="card-nw-type g-0">{props.language === "es" ? item.ntTitular.trim() : (props.language === "en" ? item.ntTitularEn.trim() : item.ntTitularPt.trim())}</h2>
-                                <div className="card-nw-title g-0 mb-3"><i className="fa fa-history"></i>&nbsp;&nbsp;{`${changeFormatMonth(item.ntFecha.substr(5, 2), props.language)} ${item.ntFecha.substr(8, 2)}, ${item.ntFecha.substr(0, 4)}`}&nbsp;<span className="badge sticker-tipo-dept" style={{ backgroundColor: "#025a27" }}>{props.language === "es" ? (item.objCategoriaNotc.gtTitular.trim() !== 'Universidad' ? item.objCategoriaNotc.gtTitular.trim() : 'Institucional') :
+                                {/*<div className="card-nw-title g-0 mb-3"><i className="fa fa-history"></i>&nbsp;&nbsp;{`${changeFormatMonth(item.ntFecha.substr(5, 2), props.language)} ${item.ntFecha.substr(8, 2)}, ${item.ntFecha.substr(0, 4)}`}&nbsp;<span className="badge sticker-tipo-dept" style={{ backgroundColor: "#025a27" }}>{props.language === "es" ? (item.objCategoriaNotc.gtTitular.trim() !== 'Universidad' ? item.objCategoriaNotc.gtTitular.trim() : 'Institucional') :
                                     (props.language === "en" ? (item.objCategoriaNotc.gtTitularEn.trim() !== 'University' ? item.objCategoriaNotc.gtTitularEn.trim() : 'Institutional') :
-                                        (item.objCategoriaNotc.gtTitularPt.trim() !== 'Universidade' ? item.objCategoriaNotc.gtTitularPt.trim() : 'Institucional'))}</span></div>
+                                        (item.objCategoriaNotc.gtTitularPt.trim() !== 'Universidade' ? item.objCategoriaNotc.gtTitularPt.trim() : 'Institucional'))}</span></div>*/}
+                                <div className="card-nw-title g-0 mb-3 d-flex flex-wrap align-items-center gap-1">
+                                    <i className="fa fa-history"></i>&nbsp;
+                                    {item.ntFecha ? `${changeFormatMonth(item.ntFecha.substr(5, 2), props.language)} ${item.ntFecha.substr(8, 2)}, ${item.ntFecha.substr(0, 4)}` : ''}
+                                    &nbsp;
+
+                                    {/* Badges dinámicos para la lista de categorías */}
+                                    {item.listaCategoriasNotc?.map((cat) => {
+                                        const catColor = cat.gtColorIdentf?.trim() || "#025a27";
+
+                                        // Selección del nombre por idioma
+                                        let catName = props.language === "es"
+                                            ? cat.gtTitular?.trim()
+                                            : (props.language === "en" ? cat.gtTitularEn?.trim() : cat.gtTitularPt?.trim());
+
+                                        // Mapeo especial: Universidad -> Institucional
+                                        if (props.language === "es") {
+                                            catName = catName !== 'Universidad' ? catName : 'Institucional';
+                                        } else if (props.language === "en") {
+                                            catName = catName !== 'University' ? catName : 'Institutional';
+                                        } else {
+                                            catName = catName !== 'Universidade' ? catName : 'Institucional';
+                                        }
+
+                                        return (
+                                            <span
+                                                key={`cat-${cat.gtCodigo}`}
+                                                className="badge sticker-tipo-dept"
+                                                style={{ backgroundColor: catColor }}
+                                            >
+                                                {catName}
+                                            </span>
+                                        );
+                                    })}
+                                </div>
                                 <div className="pnl-text-news">
                                     <p className="card-nw-text">{props.language === "es" ? item.ntDescripMeta.trim() : (props.language === "en" ? item.ntDescripMetaEn.trim() : item.ntDescripMetaPt.trim())}</p>
                                 </div>

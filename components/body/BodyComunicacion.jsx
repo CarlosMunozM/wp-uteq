@@ -55,11 +55,37 @@ function NewsPanelForPage({ currentItems, language }) {
             {currentItems.map((item, index) => {
                 const title = language === "es" ? item.ntTitular?.trim() : (language === "en" ? item.ntTitularEn?.trim() : item.ntTitularPt?.trim());
                 const desc = language === "es" ? item.ntDescripMeta?.trim() : (language === "en" ? item.ntDescripMetaEn?.trim() : item.ntDescripMetaPt?.trim());
+                /*
                 const deptName = language === "es"
                     ? (item.objDepartamento?.dpNombre?.trim() !== 'Universidad' ? item.objDepartamento?.dpNombre?.trim() : 'Institucional')
                     : (language === "en" ? (item.objDepartamento?.dpNombreEn?.trim() !== 'University' ? item.objDepartamento?.dpNombreEn?.trim() : 'Institutional') : (item.objDepartamento?.dpNombrePt?.trim() !== 'Universidade' ? item.objDepartamento?.dpNombrePt?.trim() : 'Institucional'));
 
                 const badgeBg = (item.objDepartamento?.dpColor && item.objDepartamento?.dpColor !== '') ? item.objDepartamento.dpColor : "#025a27";
+                */
+
+                <div className="flex flex-wrap gap-2">
+                    {/* Badges de Departamentos */}
+                    {item.listaDepartamentos?.map((dp) => (
+                        <span
+                            key={`dp-${dp.dpCodigo}`}
+                            style={{ backgroundColor: dp.dpColor?.trim() || '#025a27' }}
+                            className="badge"
+                        >
+                            {language === "es" ? dp.dpNombre : (language === "en" ? dp.dpNombreEn : dp.dpNombrePt)}
+                        </span>
+                    ))}
+
+                    {/* Badges de Categorías */}
+                    {item.listaCategoriasNotc?.map((cat) => (
+                        <span
+                            key={`cat-${cat.gtCodigo}`}
+                            style={{ backgroundColor: cat.gtColorIdentf?.trim() || '#025a27' }}
+                            className="badge"
+                        >
+                            {language === "es" ? cat.gtTitular : (language === "en" ? cat.gtTitularEn : cat.gtTitularPt)}
+                        </span>
+                    ))}
+                </div>
 
                 return (
                     <div className="col-md-12 col-lg-6 d-flex justify-content-center align-items-center" key={index}>
@@ -72,9 +98,27 @@ function NewsPanelForPage({ currentItems, language }) {
                                     <i className="fa fa-history"></i>&nbsp;&nbsp;
                                     {`${changeFormatMonth(item.ntFecha?.substr(5, 2), language)} ${item.ntFecha?.substr(8, 2)}, ${item.ntFecha?.substr(0, 4)}`}
                                     &nbsp;
+                                    {/*
                                     <span className="badge sticker-tipo-dept" style={{ backgroundColor: badgeBg }}>
                                         {deptName}
                                     </span>
+                                    */}
+
+                                    {/* Badges para Departamentos */}
+                                    {item.listaDepartamentos?.map((dp) => {
+                                        const dpName = language === "es" ? dp.dpNombre : (language === "en" ? dp.dpNombreEn : dp.dpNombrePt);
+                                        const dpColor = dp.dpColor?.trim() || "#025a27";
+                                        return (
+                                            <span
+                                                key={`dp-${dp.dpCodigo}`}
+                                                className="badge sticker-tipo-dept"
+                                                style={{ backgroundColor: dpColor }}
+                                            >
+                                                {dpName?.trim()}
+                                            </span>
+                                        );
+                                    })}
+
                                 </div>
                                 <div className="pnl-text-news">
                                     <p className="card-nw-text">{desc}</p>

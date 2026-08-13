@@ -117,6 +117,7 @@ function BodyNoticia(data) {
         __html: DOMPurify.sanitize(codeHTML)
     })
 
+    /*
     const listItemsNewsPanel = (dataItems, language) => {
         return (
             dataItems.map((item) => {
@@ -129,6 +130,50 @@ function BodyNoticia(data) {
             })
         )
     }
+    */
+
+    const listItemsNewsPanel = (dataItems, language) => {
+        return (
+            dataItems?.map((item) => {
+                // Extrae el primer departamento o categoría si existen
+                const primerDept = item.listaDepartamentos?.[0];
+                const primeraCat = item.listaCategoriasNotc?.[0];
+
+                const colordep = primerDept?.dpColor?.trim()
+                    || primeraCat?.gtColorIdentf?.trim()
+                    || "#025a27";
+
+                let deptName = '';
+
+                if (primerDept) {
+                    deptName = language === "es"
+                        ? (primerDept.dpNombre?.trim() !== 'Universidad' ? primerDept.dpNombre?.trim() : 'Institucional')
+                        : (language === "en"
+                            ? (primerDept.dpNombreEn?.trim() !== 'University' ? primerDept.dpNombreEn?.trim() : 'Institutional')
+                            : (primerDept.dpNombrePt?.trim() !== 'Universidade' ? primerDept.dpNombrePt?.trim() : 'Institucional'));
+                } else if (primeraCat) {
+                    deptName = language === "es"
+                        ? primeraCat.gtTitular?.trim()
+                        : (language === "en" ? primeraCat.gtTitularEn?.trim() : primeraCat.gtTitularPt?.trim());
+                } else {
+                    deptName = language === "en" ? 'Institutional' : 'Institucional';
+                }
+
+                return (
+                    <ItemNews
+                        key={uuidv4()}
+                        url={item.ntUrlNoticia}
+                        titular={language === "es" ? item.ntTitular : (language === "en" ? item.ntTitularEn : item.ntTitularPt)}
+                        urlportada={item.ntUrlPortada}
+                        colordep={colordep}
+                        departamento={deptName}
+                        fecha={item.ntFecha}
+                        language={language}
+                    />
+                );
+            })
+        );
+    };
 
     return (<>
         {
@@ -146,8 +191,56 @@ function BodyNoticia(data) {
                     </div>
                     <div className="row mb-3">
                         <div className="col-md-12 d-flex justify-content-center">
+                            {/*
                             <span className="badge" data-toggle="tooltip" data-placement="bottom" title="Departamento" style={{ backgroundColor: `${data.infonews.objDepartamento.dpColor.trim()}`, cursor: "context-menu" }}><i className="fa fa-building" aria-hidden="true"></i> {data.language === "es" ? data.infonews.objDepartamento.dpNombre.trim() : (data.language === "en" ? data.infonews.objDepartamento.dpNombreEn.trim() : data.infonews.objDepartamento.dpNombrePt.trim())}</span>&nbsp;&nbsp;
+                            */}
+
+                            {data.infonews.listaDepartamentos?.map((dp) => {
+                                const dpColor = dp.dpColor?.trim() || "#025a27";
+                                const dpName = data.language === "es"
+                                    ? dp.dpNombre?.trim()
+                                    : (data.language === "en" ? dp.dpNombreEn?.trim() : dp.dpNombrePt?.trim());
+
+                                return (
+                                    <React.Fragment key={`dp-${dp.dpCodigo}`}>
+                                        <span
+                                            className="badge"
+                                            data-toggle="tooltip"
+                                            data-placement="bottom"
+                                            title="Departamento"
+                                            style={{ backgroundColor: dpColor, cursor: "context-menu" }}
+                                        >
+                                            <i className="fa fa-building" aria-hidden="true"></i> {dpName}
+                                        </span>
+                                        &nbsp;&nbsp;
+                                    </React.Fragment>
+                                );
+                            })}
+
+                            {/*
                             <span className="badge" data-toggle="tooltip" data-placement="bottom" title="Categoría" style={{ backgroundColor: "#2D2D2D", cursor: "context-menu" }}><i className="fa fa-suitcase" aria-hidden="true"></i> {data.language === "es" ? data.infonews.objCategoriaNotc.gtTitular.trim() : (data.language === "en" ? data.infonews.objCategoriaNotc.gtTitularEn.trim() : data.infonews.objCategoriaNotc.gtTitularPt.trim())}</span>
+                            */}
+                            {data.infonews.listaCategoriasNotc?.map((cat) => {
+                                const catColor = cat.gtColorIdentf?.trim() || "#2D2D2D";
+                                const catName = data.language === "es"
+                                    ? cat.gtTitular?.trim()
+                                    : (data.language === "en" ? cat.gtTitularEn?.trim() : cat.gtTitularPt?.trim());
+
+                                return (
+                                    <React.Fragment key={`cat-${cat.gtCodigo}`}>
+                                        <span
+                                            className="badge"
+                                            data-toggle="tooltip"
+                                            data-placement="bottom"
+                                            title="Categoría"
+                                            style={{ backgroundColor: catColor, cursor: "context-menu" }}
+                                        >
+                                            <i className="fa fa-suitcase" aria-hidden="true"></i> {catName}
+                                        </span>
+                                        &nbsp;&nbsp;
+                                    </React.Fragment>
+                                );
+                            })}
                         </div>
                     </div><hr />
                     <div className="row">

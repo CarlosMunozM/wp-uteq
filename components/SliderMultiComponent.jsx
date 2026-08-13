@@ -105,7 +105,12 @@ function SliderMultiComponent(datasld, option, language, sld_type) {
                         titular={language === "es" ? item.ntTitular : (language === "en" ? item.ntTitularEn : item.ntTitularPt)}
                         urlimg={item.ntUrlSlider}
                         fecha={item.ntFecha}
-                        departamento={language === "es" ? item.objDepartamento.dpNombre : (language === "en" ? item.objDepartamento.dpNombreEn : item.objDepartamento.dpNombrePt)}
+                        /*departamento={language === "es" ? item.objDepartamento.dpNombre : (language === "en" ? item.objDepartamento.dpNombreEn : item.objDepartamento.dpNombrePt)}*/
+                        departamento={
+                            item.listaDepartamentos?.map(dp =>
+                                language === "es" ? dp.dpNombre : (language === "en" ? dp.dpNombreEn : dp.dpNombrePt)
+                            ).join(", ")
+                        }
                         language={language}
                         option={option}
                         sld_type={sld_type} />

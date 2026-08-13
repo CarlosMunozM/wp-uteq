@@ -75,7 +75,38 @@ export const getStaticProps = async ({ params, locale }) => {
 
 };
 
+export async function getStaticPaths({ locales }) {
 
+    const resListNewsUniv = await make_request_ws(WS_LIST_ALL_URLS_NEWS);
+    let paths = [];
+
+    // Validamos que exista resListNewsUniv y resListNewsUniv.data sea un arreglo
+    if (resListNewsUniv && Array.isArray(resListNewsUniv.data)) {
+        resListNewsUniv.data.forEach((block) => {
+            // Detecta si 'block' es un string directo o un objeto con propiedad ntUrlNoticia
+            const urlSlug = typeof block === 'string' ? block : block?.ntUrlNoticia;
+
+            if (urlSlug) {
+                for (const locale of locales) {
+                    paths.push({
+                        params: {
+                            ntUrlNoticia: urlSlug.trim().toLowerCase(),
+                        },
+                        locale,
+                    });
+                }
+            }
+        });
+    }
+
+    return {
+        paths,
+        fallback: 'blocking' // false
+    }
+
+}
+
+/*
 export async function getStaticPaths({ locales }) {
 
     const resListNewsUniv = await make_request_ws(WS_LIST_ALL_URLS_NEWS);
@@ -97,4 +128,4 @@ export async function getStaticPaths({ locales }) {
         fallback: 'blocking'//false
     }
 
-}
+}*/
