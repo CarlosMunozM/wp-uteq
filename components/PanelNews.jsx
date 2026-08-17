@@ -51,60 +51,106 @@ function changeFormatMonth(mes, language) {
 }
 
 function NewsPanelForPage(props) {
+    if (!props.currentItems || props.currentItems.length === 0) return null;
+
     return (
         <>
-            {props.currentItems ?
-                props.currentItems.map((item, index) => (
+            <style jsx>{`
+                .card-nw-metadata-wrapper {
+                    text-align: center;
+                    width: 100%;
+                    margin-bottom: 0.4rem !important; /* Espacio reducido */
+                }
+                .card-nw-metadata {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    max-width: 100%;
+                    gap: 6px;
+                    overflow-x: auto;
+                    white-space: nowrap;
+                    height: auto !important;
+                    min-height: 0 !important;
+                    padding-bottom: 6px;
+                    text-align: left;
+                }
+                .card-nw-metadata::-webkit-scrollbar {
+                    height: 4px;
+                }
+                .card-nw-metadata::-webkit-scrollbar-thumb {
+                    background: #ccc;
+                    border-radius: 4px;
+                }
+                .card-nw-metadata .badge {
+                    margin: 0 !important;
+                    flex-shrink: 0;
+                }
+                .card-nw-metadata span, .card-nw-metadata div {
+                    flex-shrink: 0;
+                }
+            `}</style>
+
+            {props.currentItems.map((item, index) => {
+                const title = props.language === "es" ? item.ntTitular?.trim() : (props.language === "en" ? item.ntTitularEn?.trim() : item.ntTitularPt?.trim());
+                const desc = props.language === "es" ? item.ntDescripMeta?.trim() : (props.language === "en" ? item.ntDescripMetaEn?.trim() : item.ntDescripMetaPt?.trim());
+
+                return (
                     <div className="col-md-12 col-lg-6 d-flex justify-content-center align-items-center" key={index}>
                         <div className="card-only-news w-100 m-2">
-                            <img src={`${NEWS_UNIV_IMGS_FOLDER}${item.ntUrlPortada.trim()}`} className="card-nw-image" alt="" />
+                            <img src={`${NEWS_UNIV_IMGS_FOLDER}${item.ntUrlPortada?.trim()}`} className="card-nw-image" alt="" />
                             <div className="card-nw-bdy">
                                 <div className="pnl-franja g-0 w-100 mt-2"></div>
-                                <h2 className="card-nw-type g-0">{props.language === "es" ? item.ntTitular.trim() : (props.language === "en" ? item.ntTitularEn.trim() : item.ntTitularPt.trim())}</h2>
-                                {/*<div className="card-nw-title g-0 mb-3"><i className="fa fa-history"></i>&nbsp;&nbsp;{`${changeFormatMonth(item.ntFecha.substr(5, 2), props.language)} ${item.ntFecha.substr(8, 2)}, ${item.ntFecha.substr(0, 4)}`}&nbsp;<span className="badge sticker-tipo-dept" style={{ backgroundColor: "#025a27" }}>{props.language === "es" ? (item.objCategoriaNotc.gtTitular.trim() !== 'Universidad' ? item.objCategoriaNotc.gtTitular.trim() : 'Institucional') :
-                                    (props.language === "en" ? (item.objCategoriaNotc.gtTitularEn.trim() !== 'University' ? item.objCategoriaNotc.gtTitularEn.trim() : 'Institutional') :
-                                        (item.objCategoriaNotc.gtTitularPt.trim() !== 'Universidade' ? item.objCategoriaNotc.gtTitularPt.trim() : 'Institucional'))}</span></div>*/}
-                                <div className="card-nw-title g-0 mb-3 d-flex flex-wrap align-items-center gap-1">
-                                    <i className="fa fa-history"></i>&nbsp;
+                                
+                                {/* 1. Título principal */}
+                                <h2 className="card-nw-type g-0">{title}</h2>
+                                
+                                {/* 2. Fecha estática y centrada */}
+                                <div className="card-nw-date text-center text-muted mb-2" style={{ fontSize: '0.9rem' }}>
+                                    <i className="fa fa-history"></i>&nbsp;&nbsp;
                                     {item.ntFecha ? `${changeFormatMonth(item.ntFecha.substr(5, 2), props.language)} ${item.ntFecha.substr(8, 2)}, ${item.ntFecha.substr(0, 4)}` : ''}
-                                    &nbsp;
-
-                                    {/* Badges dinámicos para la lista de categorías */}
-                                    {item.listaCategoriasNotc?.map((cat) => {
-                                        const catColor = cat.gtColorIdentf?.trim() || "#025a27";
-
-                                        // Selección del nombre por idioma
-                                        let catName = props.language === "es"
-                                            ? cat.gtTitular?.trim()
-                                            : (props.language === "en" ? cat.gtTitularEn?.trim() : cat.gtTitularPt?.trim());
-
-                                        // Mapeo especial: Universidad -> Institucional
-                                        if (props.language === "es") {
-                                            catName = catName !== 'Universidad' ? catName : 'Institucional';
-                                        } else if (props.language === "en") {
-                                            catName = catName !== 'University' ? catName : 'Institutional';
-                                        } else {
-                                            catName = catName !== 'Universidade' ? catName : 'Institucional';
-                                        }
-
-                                        return (
-                                            <span
-                                                key={`cat-${cat.gtCodigo}`}
-                                                className="badge sticker-tipo-dept"
-                                                style={{ backgroundColor: catColor }}
-                                            >
-                                                {catName}
-                                            </span>
-                                        );
-                                    })}
                                 </div>
+
+                                {/* 3. Categorías con scroll horizontal y espacio inferior reducido */}
+                                <div className="card-nw-metadata-wrapper g-0">
+                                    <div className="card-nw-metadata">
+                                        {item.listaCategoriasNotc?.map((cat) => {
+                                            const catColor = cat.gtColorIdentf?.trim() || "#025a27";
+
+                                            let catName = props.language === "es"
+                                                ? cat.gtTitular?.trim()
+                                                : (props.language === "en" ? cat.gtTitularEn?.trim() : cat.gtTitularPt?.trim());
+
+                                            if (props.language === "es") {
+                                                catName = catName !== 'Universidad' ? catName : 'Institucional';
+                                            } else if (props.language === "en") {
+                                                catName = catName !== 'University' ? catName : 'Institutional';
+                                            } else {
+                                                catName = catName !== 'Universidade' ? catName : 'Institucional';
+                                            }
+
+                                            return (
+                                                <span
+                                                    key={`cat-${cat.gtCodigo}`}
+                                                    className="badge sticker-tipo-dept"
+                                                    style={{ backgroundColor: catColor }}
+                                                >
+                                                    {catName}
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+
+                                {/* 4. Texto descriptivo */}
                                 <div className="pnl-text-news">
-                                    <p className="card-nw-text">{props.language === "es" ? item.ntDescripMeta.trim() : (props.language === "en" ? item.ntDescripMetaEn.trim() : item.ntDescripMetaPt.trim())}</p>
+                                    <p className="card-nw-text">{desc}</p>
                                 </div>
+
+                                {/* 5. Botón de acción */}
                                 <div className="row justify-content-center p-3">
                                     <div className="col-sm-12 col-lg-12 text-center">
-                                        <Link href={`/${props.language}/comunicacion/noticia/${item.ntUrlNoticia.trim()}`}>
-                                            <a target="_blank" aria-label="link noticia" data-toggle="tooltip" data-placement="bottom" title={props.language === "es" ? item.ntTitular.trim() : (props.language === "en" ? item.ntTitularEn.trim() : item.ntTitularPt.trim())}
+                                        <Link href={`/${props.language}/comunicacion/noticia/${item.ntUrlNoticia?.trim()}`}>
+                                            <a target="_blank" aria-label="link noticia" data-toggle="tooltip" data-placement="bottom" title={title}
                                                 className="btn-tp"><i className="fa fa-bookmark"></i> {props.language === "es" ? "Leer más" : (props.language === "en" ? "Read more" : "Ler mais")}</a>
                                         </Link>
                                     </div>
@@ -112,7 +158,8 @@ function NewsPanelForPage(props) {
                             </div>
                         </div>
                     </div>
-                )) : ""}
+                );
+            })}
         </>
     );
 }
@@ -148,7 +195,7 @@ async function make_request_ws(path_url) {
     return (listTemp);
 }
 
-function PanelNews(data_news, list_ctgs, cod_dep) {
+function PanelNews(data_news, list_ctgs, cod_dep, showCategoryFilter = true) {
 
     const itemsPerPage = 4;
 
@@ -199,7 +246,7 @@ function PanelNews(data_news, list_ctgs, cod_dep) {
         var listYs = [];
 
         try {
-            listYs = Array(currentYear - firstYear + 1).fill().map((_, idx) => firstYear + idx);
+            listYs = Array(currentYear - firstYear + 1).fill().map((_, idx) => firstYear + idx).sort((a, b) => b - a);
         } catch (error) {
             listYs = [];
             console.error(error);
@@ -385,29 +432,60 @@ function PanelNews(data_news, list_ctgs, cod_dep) {
     }
 
     return (<>
-        <div className="col-md-12 mt-3 pnl-form-filter-news-dep" ref={formFilterNews}>
-            <form className="form-card-filter frm-filter" onSubmit={handleSubmit(onSubmitFormFilterNews)}>
-                <div className="row justify-content-between text-left">
-                    <div className="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-5 col-xxl-5 flex-column d-flex">
-                        <label className="form-control-label px-3" htmlFor="slct-categoria">{router.locale === "es" ? "Categoría" : (router.locale === "en" ? "Category" : "Categoria")}</label>
-                        <Select
-                            name="ftCategoria"
-                            id="slct-categoria"
-                            instanceId="slct-categoria"
-                            inputId='slct-categoria'
-                            placeholder={router.locale === "es" ? "Búsqueda de categorías" : (router.locale === "en" ? "Search for categories" : "Procurar por categorias")}
-                            className={`form-select-1 form-select-lg`}
-                            classNamePrefix="form-select-1"
-                            components={makeAnimated()}
-                            onChange={handleMultiChangeSelCatgs}
-                            value={listCatgSelc}
-                            isClearable={true}
-                            closeMenuOnSelect={false}
-                            isMulti
-                            options={optionsCategrs}
-                        />
-                    </div>
-                    <div className="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 flex-column d-flex">
+
+        <style jsx>{`
+            .form-card-filter {
+                padding-bottom: 0 !important;
+                margin-bottom: 0 !important;
+            }
+
+            .frm-filter-no-category {
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+            .frm-filter-no-category .row {
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+            @media (max-width: 767px) {
+                .frm-filter-no-category .row {
+                    row-gap: 10px !important;
+                    column-gap: 0 !important;
+                }
+            }
+        `}</style>
+
+        <div className="col-md-12 pnl-form-filter-news-dep" ref={formFilterNews}>
+            <form
+                className={`form-card-filter frm-filter ${!showCategoryFilter ? 'frm-filter-no-category' : ''}`}
+                onSubmit={handleSubmit(onSubmitFormFilterNews)}
+            >
+                <div className="row align-items-end text-left g-2">
+                    {showCategoryFilter && (
+                        <div className="col-12 col-md-6 col-lg-5">
+                            <label className="form-control-label px-3" htmlFor="slct-categoria">{router.locale === "es" ? "Categoría" : (router.locale === "en" ? "Category" : "Categoria")}</label>
+                            <Select
+                                name="ftCategoria"
+                                id="slct-categoria"
+                                instanceId="slct-categoria"
+                                inputId='slct-categoria'
+                                placeholder={router.locale === "es" ? "Búsqueda de categorías" : (router.locale === "en" ? "Search for categories" : "Procurar por categorias")}
+                                className={`form-select-1 form-select-lg`}
+                                classNamePrefix="form-select-1"
+                                components={makeAnimated()}
+                                onChange={handleMultiChangeSelCatgs}
+                                value={listCatgSelc}
+                                isClearable={true}
+                                closeMenuOnSelect={false}
+                                isMulti
+                                options={optionsCategrs}
+                            />
+                        </div>
+                    )}
+
+                    <div className={`col-12 ${showCategoryFilter ? 'col-md-auto' : 'col-md-5 col-lg-3'} mb-0`}>
                         <label className="form-control-label px-3" htmlFor="slct-anio">{router.locale === "es" ? "Año" : (router.locale === "en" ? "Year" : "Ano")}</label>
                         <Select
                             name="ftAnio"
@@ -426,13 +504,18 @@ function PanelNews(data_news, list_ctgs, cod_dep) {
                             options={optionsYears}
                         />
                     </div>
-                    <div className="form-group col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 flex-column d-flex">
-                        <button type="submit" disabled={isSubmitting} className="btn-block-area" style={{ height: "38px", marginTop: "27px" }}>
-                            {isSubmitting ? (<><span className="spinner-border spinner-border-sm mr-1"></span>&nbsp;{router.locale === "es" ? "Espere" : (router.locale === "en" ? "Wait.." : "Espe..")}</>) : (<><i className="fa fa-search fa-1x" aria-hidden="true"></i>&nbsp;{router.locale === "es" ? "Buscar" : (router.locale === "en" ? "Search" : "Pesq..")}</>)}
+
+                    <div className={`col-12 ${showCategoryFilter ? 'col-md-auto' : 'col-md-5 col-lg-3'} mb-0`}>
+                        {/* Cambié w-100 a btn-block si usas Bootstrap, o mantenlo así pero sin márgenes */}
+                        <button type="submit" disabled={isSubmitting} className="btn-block-area px-4 w-100" style={{ height: "38px", margin: "0" }}>
+                            {isSubmitting ? (
+                                <><span className="spinner-border spinner-border-sm mr-1"></span>&nbsp;{router.locale === "es" ? "Espere" : (router.locale === "en" ? "Wait.." : "Espe..")}</>
+                            ) : (
+                                <><i className="fa fa-search fa-1x" aria-hidden="true"></i>&nbsp;{router.locale === "es" ? "Buscar" : (router.locale === "en" ? "Search" : "Pesq..")}</>
+                            )}
                         </button>
                     </div>
                 </div>
-
             </form>
         </div>
         <div className="col-md-12 mt-3">

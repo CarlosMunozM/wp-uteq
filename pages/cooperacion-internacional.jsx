@@ -60,7 +60,9 @@ export const getStaticProps = async ({ locale }) => {
     const countAgI = await make_request_ws(`${WS_COUNT_AGREEMTS_5}2`);
     const countAgPB = await make_request_ws(`${WS_COUNT_AGREEMTS_6}NACIONAL`);
     const countAgPV = await make_request_ws(`${WS_COUNT_AGREEMTS_6}INTERNACIONAL`);
-    const resListNewsUniv = await make_request_ws(`${WS_LIST_FILTER_NEWS_BY_PARAMETERS}19/0`);
+    //const resListNewsUniv = await make_request_ws(`${WS_LIST_FILTER_NEWS_BY_PARAMETERS}19/0`);
+    const resListNewsUnivInternationalization = await make_request_ws(`${WS_LIST_FILTER_NEWS_BY_PARAMETERS}19/6`);
+    const resListNewsUnivStudentMobility = await make_request_ws(`${WS_LIST_FILTER_NEWS_BY_PARAMETERS}19/7`);
     const resActvCategrs = await make_request_ws(WS_LIST_ACTIVE_CATEGORIES);
 
     return {
@@ -79,7 +81,9 @@ export const getStaticProps = async ({ locale }) => {
             slider1: resSlider.data,
             data8: resInfoUniversity.data,
             authort: resInfoAuthority.data,
-            news: resListNewsUniv.data,
+            //newsCoopInt: resListNewsUniv.data,
+            newsInternationalization: resListNewsUnivInternationalization.data,
+            newsStudentMobility: resListNewsUnivStudentMobility.data,
             actcategrs: resActvCategrs.data,
             titlepage: (locale === "es" ? "Cooperación Internacional - UTEQ" : (locale === "en" ? 'International Cooperation - UTEQ' : 'Cooperação Internacional - UTEQ')),
             descpage: (locale === "es" ? "Sitio web de Cooperación Internacional de la UTEQ" : (locale === "en" ? 'UTEQ International Cooperation website' : 'Website de Cooperação Internacional da UTEQ')),
@@ -89,6 +93,6 @@ export const getStaticProps = async ({ locale }) => {
             codpage: '06049e96-9678-11ec-9c80-244bfe557d55',
             language: locale
         },
-        revalidate: 300 // Revalida en segundo plano cada 5 minutos (300 segundos)
+        revalidate: 60 // Revalida en segundo plano cada minuto (60 segundos)
     };
 };

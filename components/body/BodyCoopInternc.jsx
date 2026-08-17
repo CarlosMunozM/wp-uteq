@@ -398,11 +398,40 @@ function BodyCoopInternc(data) {
                     </div>
 
                 </Tab>
-                <Tab eventKey="tab1" title={data.language === "es" ? "Convenios suscritos" : (data.language === "en" ? "Agreements signed" : "Acordos assinados")}>
+                {/*
+                <Tab eventKey="tab1" title={data.language === "es" ? "Noticias" : (data.language === "en" ? "News" : "Notícias")}>
+                    {
+                        (data.newsCoopInt !== null && data.newsCoopInt !== "") && (<>
+                            {
+                                data.newsCoopInt.length > 0 && (<>{PanelNews(data.newsCoopInt, data.actcategrs, data.codpage)}</>)
+                            }
+                        </>)
+                    }
+                </Tab>
+                */}
+                <Tab eventKey="tab2" title={data.language === "es" ? "Internacionalización" : (data.language === "en" ? "Internationalization" : "Internacionalização")}>
+                    {
+                        (data.newsInternationalization !== null && data.newsInternationalization !== "") && (<>
+                            {
+                                data.newsInternationalization.length > 0 && (<>{PanelNews(data.newsInternationalization, data.actcategrs, data.codpage, false)}</>)
+                            }
+                        </>)
+                    }
+                </Tab>
+                <Tab eventKey="tab3" title={data.language === "es" ? "Movilidad estudiantil" : (data.language === "en" ? "Student Mobility" : "Mobility Estudantil")}>
+                    {
+                        (data.newsStudentMobility !== null && data.newsStudentMobility !== "") && (<>
+                            {
+                                data.newsStudentMobility.length > 0 && (<>{PanelNews(data.newsStudentMobility, data.actcategrs, data.codpage, false)}</>)
+                            }
+                        </>)
+                    }
+                </Tab>
+                <Tab eventKey="tab4" title={data.language === "es" ? "Convenios" : (data.language === "en" ? "Agreements" : "Acordos")}>
 
                     {/* 
-                <h2 className="msg-pnl-search text-right mt-3">{data.language === "es" ? "Listado de convenios suscritos" : (data.language === "en" ? "List of agreements signed" : "Lista de acordos assinados")}</h2>
-                */}
+                    <h2 className="msg-pnl-search text-right mt-3">{data.language === "es" ? "Listado de convenios suscritos" : (data.language === "en" ? "List of agreements signed" : "Lista de acordos assinados")}</h2>
+                    */}
 
                     <div className="col-md-12 w-100 mt-1" id="table-aggrets" ref={tableRef}>
                         <DataTable
@@ -428,15 +457,6 @@ function BodyCoopInternc(data) {
                             responsive
                         />
                     </div>
-                </Tab>
-                <Tab eventKey="tab2" title={data.language === "es" ? "Noticias" : (data.language === "en" ? "News" : "Notícias")}>
-                    {
-                        (data.news !== null && data.news !== "") && (<>
-                            {
-                                data.news.length > 0 && (<>{PanelNews(data.news, data.actcategrs, data.codpage)}</>)
-                            }
-                        </>)
-                    }
                 </Tab>
             </Tabs>
         </div > <br />

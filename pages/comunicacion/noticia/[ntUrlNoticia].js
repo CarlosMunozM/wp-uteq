@@ -70,7 +70,7 @@ export const getStaticProps = async ({ params, locale }) => {
             codpage: '755bdb85-b1a3-4960-a38c-37f3fdee3273',
             language: locale,
         },
-        revalidate: 300 // Revalida en segundo plano cada 5 minutos (300 segundos)
+        revalidate: 60 // Revalida en segundo plano cada minuto (60 segundos)
     };
 
 };

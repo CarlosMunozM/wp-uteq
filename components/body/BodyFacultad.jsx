@@ -117,7 +117,7 @@ function BodyFacultad(data) {
                                                     playsinline={true}
                                                     muted={false}
                                                     url={`${data.faculty.dpUrlVideo.trim()}?showinfo=0&enablejsapi=1&origin=${apiUrl}`}
-                                                    controls={false} />
+                                                    controls={true} />
                                             </div>
                                         </div>
                                     </>)
