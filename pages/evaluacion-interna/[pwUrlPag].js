@@ -63,7 +63,8 @@ export const getStaticProps = async ({ params, locale }) => {
             urlimage: `${FRONT_PG_IMGS_FOLDER}${locale==="es"?"imagen_evaluacion_interna_uteq_es.jpg":(locale==="en"?"imagen_evaluacion_interna_uteq_en.jpg":"imagen_evaluacion_interna_uteq_pt.jpg")}`,
             bannerimg: (resInfoPageWeb.data !== null && resInfoPageWeb.data !== '' ? resInfoPageWeb.data.pwImgBanner.trim() : 'img-uteq-banner-0000022.jpg'),
             codpage: 'f550ddfa-9b02-11ec-9f94-244bfe557d55',
-            language: locale
+            language: locale,
+            shortUrlPage: resInfoPageWeb.data.pwUrlPag.trim()
         }
     };
 };
