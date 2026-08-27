@@ -250,11 +250,14 @@ function LayoutSecond(data) {
         {
             (data.option === 74 || data.option === 75 || data.option === 76) ? (<>
                 {renderElementBodyPage(data)}
+                {/* Video Institucional */}
+                {/*
                 <br /><br /><div className="row g-0">
                     <div className="col-md-12 col-lg-12">
                         {renderElementPresentationVideo()}
                     </div>
                 </div>
+                */}
             </>) : ""
         }
         {
@@ -269,11 +272,14 @@ function LayoutSecond(data) {
                         <div className="col-md-12 col-lg-9">
                             {renderElementBodyPage(data)}
                             {(data.option === 47 || data.option === 48 || data.option === 49 || data.option === 52 || data.option === 55 || data.option === 56 || data.option === 57 || data.option === 58 || data.option === 59 || data.option === 60 || data.option === 62 || data.option === 63 || data.option === 64 || data.option === 65 || data.option === 66 || data.option === 67 || data.option === 72) && renderListMagazines(data.datamagz.filter(item => item.dmCodgDato !== 55), data.option, data.language)}
+                            {/* Video Institucional */}
+                            {/*
                             <br /><br /><div className="row">
                                 <div className="col-md-12 col-lg-12">
                                     {renderElementPresentationVideo()}
                                 </div>
                             </div>
+                            */}
                         </div>
                         <div className="col-md-12 col-lg-3 pt-3">
                             {(data.option !== 10) && SideMenu(data)}
@@ -284,11 +290,14 @@ function LayoutSecond(data) {
                     (data.option === 19 || data.option === 45 || data.option === 71 || data.option === 73 || data.option === 21 || data.option === 10) && (<>
                         <div className="col-md-12 col-lg-12">
                             {renderElementBodyPage(data)}
+                            {/* Video Institucional */}
+                            {/*
                             <br /><br /><div className="row">
                                 <div className="col-md-12 col-lg-12">
                                     {renderElementPresentationVideo()}
                                 </div>
                             </div>
+                            */}
                         </div>
                     </>)
                 }
