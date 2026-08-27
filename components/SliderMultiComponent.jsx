@@ -22,8 +22,27 @@ const responsiveCust = (optSld) => {
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
-            items: 1
+            items: 2
         }
+    }
+};
+
+const responsiveCareer = {
+    superLargeDesktop: {
+        breakpoint: { max: 4000, min: 2000 },
+        items: 6
+    },
+    desktop: {
+        breakpoint: { max: 2000, min: 1024 },
+        items: 5
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 3
+    },
+    mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 2
     }
 };
 
@@ -67,10 +86,10 @@ function ItemSliderCareer(props) {
         <div className="item" key={props.key}>
             <a href={`/${props.language}/grado/carrera/${props.urlpgw}`} target="_blank" style={{ textDecoration: "none" }} data-toggle="tooltip" data-placement="bottom" title={props.descriptionimg}>
                 <div className="work">
-                    <div className="img-n1 d-flex align-items-end justify-content-center" style={{ backgroundImage: `linear-gradient(to bottom, rgba(2, 90, 39, 0), rgba(2, 90, 39, 0.7)), url(${IMG_VERTICAL_PRINCIPAL_CAREERS}${props.urlimage.trim()})` }}>
+                    <div className="img-n1 img-career-sld d-flex align-items-end justify-content-center" style={{ backgroundImage: `linear-gradient(to bottom, rgba(2, 90, 39, 0), rgba(2, 90, 39, 0.7)), url(${IMG_VERTICAL_PRINCIPAL_CAREERS}${props.urlimage.trim()})` }}>
                         <div className="text w-100">
-                            <h3 className="title-news-sld">{props.namecrs}</h3>
-                            <h4 className="subtitle-news-sld">{props.faculty}</h4>
+                            <h3 className="title-career-sld">{props.namecrs}</h3>
+                            <h4 className="subtitle-career-sld">{props.faculty}</h4>
                         </div>
                     </div>
                 </div>
@@ -82,7 +101,7 @@ function ItemSliderCareer(props) {
 function SliderMultiComponent(datasld, option, language, sld_type) {
 
     const [autoPlay, setAutoPlay] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
+    //const [isHovered, setIsHovered] = useState(false);
     const containerRef = useRef(null);
 
     // Observer para activar/desactivar según el scroll en pantalla
@@ -148,21 +167,22 @@ function SliderMultiComponent(datasld, option, language, sld_type) {
                 draggable={false}
                 showDots={false}
                 arrows={true}
-                responsive={responsiveCust(option)}
+                //responsive={responsiveCust(option)}
+                responsive={sld_type === 2 ? responsiveCareer : responsiveCust(option)}
                 ssr={true}
                 infinite={true}
-                key={`${option}-${isHovered}`}
+                //key={`${option}-${isHovered}`}
                 autoPlay={autoPlay}
-                autoPlaySpeed={sld_type === 1 ? 5000 : 1900} 
+                autoPlaySpeed={sld_type === 1 ? 5000 : 1900}
                 keyBoardControl={true}
                 pauseOnHover={false}
                 customTransition={sld_type === 1 ? "all 1.2s ease-in-out" : "all .5"}
                 transitionDuration={sld_type === 1 ? 1200 : 900}
                 containerClass="carousel-container bg-dark"
                 dotListClass="custom-dot-list-style"
-                itemClass="item"
-                onMouseEnter={() => setIsHovered(prev => !prev)}
-                onMouseLeave={() => setIsHovered(prev => !prev)}>
+                //onMouseEnter={() => setIsHovered(prev => !prev)}
+                //onMouseLeave={() => setIsHovered(prev => !prev)}
+                itemClass="item">
                 {listItemSlider(datasld)}
             </Carousel>
         </div>

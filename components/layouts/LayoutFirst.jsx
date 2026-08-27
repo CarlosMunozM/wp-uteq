@@ -272,22 +272,22 @@ function LayoutFirst(data) {
         return (
             <div className="container-fluid g-0">
                 <div className="row g-0">
-                    <div className="col-md-12 col-lg-6 g-0">
-                        <div className="col-md-12 w-100 text-center p-3 title-section">{data.language === "en" ? "JOURNALS" : "REVISTAS"}</div>
+                    <div className="col-md-12 col-lg-4 g-0">
+                        <div className="col-md-12 w-100 text-center p-2 title-section">{data.language === "en" ? "JOURNALS" : "REVISTAS"}</div>
                         <div className="col-md-12 w-100 pnl-sld-mgz-index">
                             {SliderImg(dataGnrl.magazines, 82, 2000, 1000)}
                         </div>
                     </div>
-                    <div className="col-md-12 col-lg-3 g-0">
-                        <div className="col-md-12 w-100 text-center p-3 title-section">{data.language === "es" ? "AGENDA" : (data.language === "en" ? "CALENDAR" : "ACORDO")}</div>
+                    <div className="col-md-12 col-lg-4 g-0">
+                        <div className="col-md-12 w-100 text-center p-2 title-section">{data.language === "es" ? "AGENDA" : (data.language === "en" ? "CALENDAR" : "ACORDO")}</div>
                         <div className="col-md-12 w-100">
                             <a href={`/${data.language}/ubu/planificacion`}>
                                 {renderEventsUBUPanel(dataGnrl.events, dataGnrl.language)}
                             </a>
                         </div>
                     </div>
-                    <div className="col-md-12 col-lg-3 g-0">
-                        <div className="col-md-12 w-100 text-center p-3 title-section">{data.language === "es" ? "EDUCACIÓN CONTINUA" : (data.language === "en" ? "CONTINUING EDUCATION" : "FORMAÇÃO CONTÍNUA")}</div>
+                    <div className="col-md-12 col-lg-4 g-0">
+                        <div className="col-md-12 w-100 text-center p-2 title-section">{data.language === "es" ? "EDUCACIÓN CONTINUA" : (data.language === "en" ? "CONTINUING EDUCATION" : "FORMAÇÃO CONTÍNUA")}</div>
                         <div className="col-md-12 w-100">
                             <a href="https://educacioncontinua.uteq.edu.ec/" target="_blank">
                                 {renderCoursesEdCntPanel(data.courses, dataGnrl.language)}
@@ -303,17 +303,17 @@ function LayoutFirst(data) {
         return (
             <div className="container-fluid g-0">
                 <div className="row g-0">
-                    <div className="col-md-12 col-lg-6 g-0">
+                    <div className="col-md-12 col-lg-6 g-0 research-section">
                         <a href={`/${data.language}/investigacion`} target="_blank" aria-label="link pagina investigacion" data-toggle="tooltip" data-placement="bottom" title={data.language === "es" ? "Página web de Investigación" : (data.language === "en" ? "Research website" : "Sítio Web de investigação")} style={{ textDecoration: "none" }}>
-                            <div className="col-md-12 w-100 text-center p-3 title-news">{data.language === "es" ? "INVESTIGACIÓN" : (data.language === "en" ? "RESEARCH" : "INVESTIGAÇÃO")}</div>
+                            <div className="col-md-12 w-100 text-center p-2 title-news">{data.language === "es" ? "INVESTIGACIÓN" : (data.language === "en" ? "RESEARCH" : "INVESTIGAÇÃO")}</div>
                         </a>
                         <div className="col-md-12 w-100">
                             {SliderMultiComponent(dataImg.newsres, 2, data.language, 1)}
                         </div>
                     </div>
-                    <div className="col-md-12 col-lg-6 g-0">
+                    <div className="col-md-12 col-lg-6 g-0 linkage-section">
                         <a href={`/${data.language}/vinculacion`} target="_blank" aria-label="link pagina vinculacion" data-toggle="tooltip" data-placement="bottom" title={data.language === "es" ? "Página web de Vinculación" : (data.language === "en" ? "Linking web page" : "Ligação à página web")} style={{ textDecoration: "none" }}>
-                            <div className="col-md-12 w-100 text-center p-3 title-news">{data.language === "es" ? "VINCULACIÓN" : (data.language === "en" ? "LINKAGE" : "LIGAÇÃO")}</div>
+                            <div className="col-md-12 w-100 text-center p-2 title-news">{data.language === "es" ? "VINCULACIÓN" : (data.language === "en" ? "LINKAGE" : "LIGAÇÃO")}</div>
                         </a>
                         <div className="col-md-12 w-100">
                             {SliderMultiComponent(dataImg.newslkg, 2, data.language, 1)}
@@ -328,8 +328,8 @@ function LayoutFirst(data) {
         return (
             <div className="container-fluid g-0">
                 <div className="row g-0">
-                    <div className="col-md-12 g-0">
-                        <div className="col-md-12 w-100 text-center p-3 title-news">{data.language === "es" ? "ÚLTIMAS NOTICIAS" : (data.language === "en" ? "LATEST NEWS" : "ÚLTIMAS NOTÍCIAS")}</div>
+                    <div className="col-md-12 g-0 last-news-section">
+                        <div className="col-md-12 w-100 text-center p-2 title-news">{data.language === "es" ? "ÚLTIMAS NOTICIAS" : (data.language === "en" ? "LATEST NEWS" : "ÚLTIMAS NOTÍCIAS")}</div>
                         <div className="col-md-12">
                             {SliderMultiComponent(dataImg.newsAll, 1, data.language, 1)}
                         </div>
@@ -344,7 +344,7 @@ function LayoutFirst(data) {
             <div className="container-fluid g-0">
                 <div className="row g-0">
                     <div className="col-md-12 g-0">
-                        <div className="col-md-12 w-100 text-center p-3 title-news">{data.language === "es" ? "ESTUDIA CON NOSOTROS" : (data.language === "en" ? "STUDY WITH US" : "ESTUDE CONOSCO")}</div>
+                        <div className="col-md-12 w-100 text-center p-2 title-news">{data.language === "es" ? "ESTUDIA CON NOSOTROS" : (data.language === "en" ? "STUDY WITH US" : "ESTUDE CONOSCO")}</div>
                         <div className="col-md-12">
                             {SliderMultiComponent(dataImg.careers, 1, data.language, 2)}
                         </div>
@@ -372,8 +372,8 @@ function LayoutFirst(data) {
     const renderElementAcademicSect = () => {
         return (<><div className="container-fluid g-0">
             <div className="row text-white g-0">
-                <div className="col-md-6 col-lg-6 g-0"><a href={`/${data.language}/grado/carreras`} data-toggle="tooltip" data-placement="bottom" title={data.language === "es" ? "Enlace a la página de carreras universitarias" : (data.language === "en" ? "Link to the university careers page" : "Vinculação à página de cursos da universidade")}><img src={`/assets/img/${data.language === "es" ? "carreras-de-grado-uteq-es.webp" : (data.language === "en" ? "carreras-de-grado-uteq-en.webp" : "carreras-de-grado-uteq-pt.webp")}`} className="img-fluid" alt="Carreras" /></a></div>
-                <div className="col-md-6 col-lg-6 g-0"><a href={`/${data.language}/posgrado`} data-toggle="tooltip" data-placement="bottom" title={data.language === "es" ? "Enlace a la página de programas de maestría" : (data.language === "en" ? "Link to the Master's programmes page" : "Vinculação à página dos programas de mestrado")}><img src={`/assets/img/${data.language === "es" ? "posgrado-uteq-es.webp" : (data.language === "en" ? "posgrado-uteq-en.webp" : "posgrado-uteq-pt.webp")}`} className="img-fluid" alt="Posgrado" /></a></div>
+                <div className="col-md-6 col-lg-6 g-0 academic-img"><a href={`/${data.language}/grado/carreras`} data-toggle="tooltip" data-placement="bottom" title={data.language === "es" ? "Enlace a la página de carreras universitarias" : (data.language === "en" ? "Link to the university careers page" : "Vinculação à página de cursos da universidade")}><img src={`/assets/img/${data.language === "es" ? "carreras-de-grado-uteq-es.webp" : (data.language === "en" ? "carreras-de-grado-uteq-en.webp" : "carreras-de-grado-uteq-pt.webp")}`} className="img-fluid" alt="Carreras" /></a></div>
+                <div className="col-md-6 col-lg-6 g-0 academic-img"><a href={`/${data.language}/posgrado`} data-toggle="tooltip" data-placement="bottom" title={data.language === "es" ? "Enlace a la página de programas de maestría" : (data.language === "en" ? "Link to the Master's programmes page" : "Vinculação à página dos programas de mestrado")}><img src={`/assets/img/${data.language === "es" ? "posgrado-uteq-es.webp" : (data.language === "en" ? "posgrado-uteq-en.webp" : "posgrado-uteq-pt.webp")}`} className="img-fluid" alt="Posgrado" /></a></div>
             </div>
         </div></>)
     }
@@ -392,7 +392,7 @@ function LayoutFirst(data) {
             <div className="col-md-12 col-lg-12">
                 <div className="row">
                     <div className="col-12 mt-3 mb-1">
-                        <h4 id="title-met">{data.language === "es" ? "UTEQ en cifras" : (data.language === "en" ? "Metrics of the UTEQ" : "Métricas UTEQ")}</h4>
+                        <h4 id="title-met" className="title-metrics">{data.language === "es" ? "UTEQ en cifras" : (data.language === "en" ? "Metrics of the UTEQ" : "Métricas UTEQ")}</h4>
                     </div>
                 </div>
                 <div className="row mt-3">
@@ -414,7 +414,7 @@ function LayoutFirst(data) {
         return (<>
             <a href="https://tour-virtual.uteq.edu.ec/" target="_blank" data-toggle="tooltip" data-placement="bottom" title={data.language === "es" ? "Enlace al Tour Virtual 360" : (data.language === "en" ? "Link to the 360° Virtual Tour" : "Ligação para a visita virtual de 360")}>
                 <div className="ratio ratio-16x9 panel-vd">
-                    <video className="bg-video" autoPlay loop muted>
+                    <video className="bg-video" autoPlay loop muted playsInline preload="auto">
                         <source src={VIDEOS_FOLDER + "tour-virtual-360.mp4"} type="video/mp4" />
                     </video>
                     <h1 className="text">{data.language === "es" ? "Tour virtual 360º - Explora y conoce la UTEQ" : (data.language === "en" ? "360º Virtual Tour - Explore and know UTEQ" : "Visita Virtual 360º - Explore e conheça a UTEQ")}
@@ -428,7 +428,7 @@ function LayoutFirst(data) {
     const renderElementPrincipalVideo = () => {
         return (<>
             <div className="ratio ratio-21x9 bg-principal-video">
-                <video autoPlay loop muted>
+                <video autoPlay loop muted playsInline preload="auto">
                     <source src={VIDEOS_FOLDER + (data.language === "es" ? "video-institucional-uteq.mp4" : (data.language === "en" ? "video-institucional-uteq.mp4" : "video-institucional-uteq.mp4"))} type="video/mp4" />
                 </video>
             </div>
@@ -454,7 +454,7 @@ function LayoutFirst(data) {
         {renderElementLastNewsResLink(data)}
         {renderElementMetrics(data)}
         {renderElementUnivServices()}
-        {renderElementPresentationVideo()}
+        {/*renderElementPresentationVideo()}*/}
         {FooterComponent(data)}
         {(typeof data.codpage !== 'undefined') && ModalPage(data.codpage, data.language)}
     </>);

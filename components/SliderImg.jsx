@@ -157,7 +157,7 @@ function SliderImg(datacomp, opt, time1, time2) {
         case 50:
         case 51:
         case 61:
-    	case 91:
+        case 91:
             folderImg = IMG_SLD_INVESTG_FOLDER;
             folderDoc = INV_DOCS_FOLDER;
             break;
@@ -266,7 +266,7 @@ function SliderImg(datacomp, opt, time1, time2) {
             return (<div className="item item-sld-mult">
                 <div className="work">
                     <a href={(!regEx.test(props.url) ? (`${props.folderdoc}${props.url.trim()}`) : props.url.trim())} target="_blank" aria-label="link memoria" data-toggle="tooltip" data-placement="bottom" title={props.nombre.trim()}>
-                        <div className={`${props.tipo===50?"img-n11":"pnl-memories"} d-flex align-items-end justify-content-center`} style={{ backgroundImage: `url(${props.folderimg}${props.urlimgvid.trim()})` }}></div>
+                        <div className={`${props.tipo === 50 ? "img-n11" : "pnl-memories"} d-flex align-items-end justify-content-center`} style={{ backgroundImage: `url(${props.folderimg}${props.urlimgvid.trim()})` }}></div>
                     </a>
                 </div>
             </div>)
@@ -292,10 +292,10 @@ function SliderImg(datacomp, opt, time1, time2) {
                 </a>
             </div>)
         } else if (props.tipo === 81) {
-            return (<CardImg variant="top" src={folderImg + props.urlportada.trim()} className="image-mgz-pnl" alt={props.nombre.trim()} />)
+            return (<CardImg variant="top" src={folderImg + props.urlportada.trim()} className="image-mgz-pnl slider-educacion" alt={props.nombre.trim()} />)
         } else if (props.tipo === 82) {
             return (<a href={props.urlimgweb.trim()} target="_blank" data-toggle="tooltip" data-placement="bottom" title={props.nombre.trim()}>
-                <CardImg variant="top" src={folderImg + props.urlportada.trim()} className="image-mgz-pnl" alt={props.nombre.trim()} />
+                <CardImg variant="top" src={folderImg + props.urlportada.trim()} className="image-mgz-pnl slider-revistas" alt={props.nombre.trim()} />
             </a>)
         } else if (props.tipo === 83) {
             return (<div className="col-lg-4 g-0 mx-auto">
@@ -309,7 +309,7 @@ function SliderImg(datacomp, opt, time1, time2) {
                 </figure>
             </div>)
         } else if (props.tipo === 85) {
-            return (<CardImg variant="top" src={folderImg + props.urlportada.trim()} className="image-mgz-pnl" alt={props.nombre.trim()} />)
+            return (<CardImg variant="top" src={folderImg + props.urlportada.trim()} className="image-mgz-pnl slider-agenda" alt={props.nombre.trim()} />)
         } else if (props.tipo === 90) {
             return (
                 <div className="pnl-evt1 p-1">
@@ -328,7 +328,7 @@ function SliderImg(datacomp, opt, time1, time2) {
                         <iframe
                             className="card-nw-image"
                             src={props.urlembvid !== "#" ? props.urlembvid : "/assets/img/imagen-estandar-poster-virtual-cidu-2023-uteq.webp"}
-                        	referrerPolicy="strict-origin-when-cross-origin"
+                            referrerPolicy="strict-origin-when-cross-origin"
                             frameBorder="0"
                             title={`Video explicativo de la Ponencia ${props.key}`}>
                         </iframe>
@@ -409,71 +409,105 @@ function SliderImg(datacomp, opt, time1, time2) {
         }</>)
     }
 
+    const sliderClass =
+        opt === 82
+            ? "slider-revistas"
+            : opt === 85
+                ? "slider-agenda"
+                : opt === 81
+                    ? "slider-educacion-continua"
+                    : "";
+
+    const responsiveMgz = {
+        superLargeDesktop: {
+            breakpoint: { max: 4000, min: 2000 },
+            items: 3
+        },
+        desktop: {
+            breakpoint: { max: 2000, min: 1024 },
+            items: 2
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 2
+        }
+    };
+
     return (<>
-        <Carousel
-            swipeable={false}
-            draggable={false}
-            showDots={false}
-            arrows={true/*opt !== 81 && opt !== 82 && opt !== 85*/}
-            responsive={responsiveCust(opt)}
-            ssr={true}
-            infinite={true}
-            autoPlay={true}
-            autoPlaySpeed={time1}
-            keyBoardControl={true}
-            customTransition="transform 750ms ease-in-out 0s"
-            transitionDuration={time2}
-            containerclassName="carousel-container text-center"
-            dotListclassName="custom-dot-list-style"
-            itemclass="carousel-item-padding-40-px">
-            {
-                (datacomp !== null && datacomp !== "") && datacomp.map(
-                    (item) => {
-                        if (opt === 11) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} url={item.crUrlParcial.trim()} nombre={item.crNombre.trim()} urlportada={item.crUrlPortada.trim()} />
-                        } else if (opt === 12) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} url={item.sldEnlace.trim()} nombre={router.locale === "es" ? item.sldTitulo.trim() : (router.locale === "en" ? item.sldTituloEn.trim() : item.sldTituloPt.trim())} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
-                        } else if (opt === 22) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} fecha={item.prFecha} texto={item.prTextoTwt} codpub={item.prCodPub} />
-                        } else if (opt === 23) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} url={item.urlpw.trim()} folderimg={folderImg} urlportada={item.urlportada.trim()} />
-                        } else if (opt === 24 || opt === 25) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} folderimg={folderImg} urlportadavid={item.portadaVideo.trim()} urlvideo2={item.urlvideo2} nombre={router.locale === "es" ? item.titulo : (router.locale === "en" ? item.tituloEn : item.tituloPt)} />
-                        } else if (opt === 26 || opt === 28) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} url={"/" + router.locale + item.sldEnlace.trim()} nombre={router.locale === "es" ? item.sldTitulo.trim() : (router.locale === "en" ? item.sldTituloEn.trim() : item.sldTituloPt.trim())} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
-                        } else if (opt === 47 || opt === 48 || opt === 49 || opt === 52 || opt === 55 || opt === 56 || opt === 57 || opt === 58 || opt === 59 || opt === 60 || opt === 62 || opt === 63 || opt === 64 || opt === 65 || opt === 66 || opt === 67 || opt === 72) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} url={router.locale === "es" ? item.dmUrlPagWeb : (router.locale === "en" ? item.dmDescTramiteEn.trim() : item.dmDescTramitePt.trim())} nombre={item.dmDescripcion.trim()} folderimg={folderImg} urlportada={router.locale === "es" ? item.dmUrlFoto.trim() : (router.locale === "en" ? item.dmDescripcionEn.trim() : item.dmDescripcionPt.trim())} />
-                        } else if (opt === 50) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} folderdoc={folderDoc} url={item.sldEnlace} nombre={item.sldTitulo.trim()} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
-                        } else if (opt === 51) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} folderdoc={folderDoc} url={item.sldEnlace.trim()} nombre={item.sldTitulo.trim()} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
-                        } else if (opt === 68) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} nombre={item.sldTitulo.trim()} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
-                        } else if (opt === 80) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} codigo={item.id} titulo={item.titulo.trim()} urlportada={item.urlportada.trim()} />
-                        } else if (opt === 81) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} nombre={router.locale==="es"?item.sldTitulo.trim():(router.locale==="en"?item.sldTituloEn.trim():item.sldTituloPt.trim())} urlportada={router.locale==="es"?item.sldUrlImgVid.trim():(router.locale==="en"?item.sldUrlImgVidEn.trim():item.sldUrlImgVidPt.trim())} urlimgweb={item.sldEnlace.trim()} />
-                        } else if (opt === 82) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} nombre={item.dmDescripcion.trim()} urlportada={router.locale === "es" ? item.dmUrlFoto.trim() : (router.locale === "en" ? item.dmDescripcionEn.trim() : item.dmDescripcionPt.trim())} urlimgweb={router.locale === "es" ? item.dmUrlPagWeb.trim() : (router.locale === "en" ? item.dmDescTramiteEn.trim() : item.dmDescTramitePt.trim())} />
-                        } else if (opt === 83) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} folderImg={folderImg} urlimgweb={item.dmUrlFoto} profesional={item.dmNombreGrad} cargo={item.dmProfesion} testimonio={item.dmRespuesta} />
-                        } else if (opt === 84) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} nombre={(item.glbDescripc !== null && item.glbDescripc !== "") ? item.glbDescripc.trim() : "Imagen de Laboratorio - UTEQ"} folderimg={folderImg} urlimgvid={item.glbUrlImg.trim()} />
-                        } else if (opt === 85) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} nombre={router.locale==="es"?item.evDescripcion.trim():(router.locale==="en"?(item.evDescriptionEn ? item.evDescriptionEn.trim() : ""):(item.evDescriptionPt ? item.evDescriptionPt.trim() : ""))} urlportada={router.locale==="es"?item.evtUrlAfiche.trim():(router.locale==="en"?item.evtUrlAficheEn.trim():item.evtUrlAfichePt.trim())} />
-                        } else if (opt === 90) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} folderdoc={folderDoc} url={item.dtUrlEnlace.trim()} nombre={router.locale==="es"?item.dtDescripcion1.trim():(router.locale==="en"?item.dtDescripcion1En.trim():item.dtDescripcion1Pt.trim())} folderimg={folderImg} urlimgvid={item.dtImagen.trim()} />
-                        } else if (opt === 91) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} option={item.sldTipo} folderdoc={folderDoc} url={router.locale === "es" ? item.sldEnlace.trim() : (router.locale === "en" ? item.sldEnlaceEn.trim() : item.sldEnlacePt.trim())} nombre={router.locale === "es" ? item.sldTitulo.trim() : (router.locale === "en" ? item.sldTituloEn.trim() : item.sldTituloPt.trim())} folderimg={folderImg} urlimgvid={router.locale === "es" ? item.sldUrlImgVid.trim() : (router.locale === "en" ? item.sldUrlImgVidEn.trim() : item.sldUrlImgVidPt.trim())} />
-                        } else if (opt === 92) {
-                            return <ItemSlider key={uuidv4()} tipo={opt} urlembvid={item.video} nombre={item.titulo} palabras={item.palabras_clave} autores={item.autor_principal} codigo={item.idponencia} />
-                        } else {
-                            return <ItemSlider key={uuidv4()} tipo={opt} option={item.sldTipo} folderdoc={folderDoc} url={item.sldEnlace.trim()} nombre={router.locale === "es" ? item.sldTitulo.trim() : (router.locale === "en" ? item.sldTituloEn.trim() : item.sldTituloPt.trim())} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
+        <div className={sliderClass}>
+            <Carousel
+                swipeable={false}
+                draggable={false}
+                showDots={false}
+                arrows={true/*opt !== 81 && opt !== 82 && opt !== 85*/}
+                responsive={
+                    (opt === 81 || opt === 82 || opt === 85)
+                        ? responsiveMgz
+                        : responsiveCust(opt)
+                }
+                ssr={true}
+                infinite={true}
+                autoPlay={true}
+                autoPlaySpeed={time1}
+                keyBoardControl={true}
+                customTransition="transform 750ms ease-in-out 0s"
+                transitionDuration={time2}
+                containerclassName="carousel-container text-center"
+                dotListclassName="custom-dot-list-style"
+                itemclass="carousel-item-padding-40-px">
+                {
+                    (datacomp !== null && datacomp !== "") && datacomp.map(
+                        (item) => {
+                            if (opt === 11) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} url={item.crUrlParcial.trim()} nombre={item.crNombre.trim()} urlportada={item.crUrlPortada.trim()} />
+                            } else if (opt === 12) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} url={item.sldEnlace.trim()} nombre={router.locale === "es" ? item.sldTitulo.trim() : (router.locale === "en" ? item.sldTituloEn.trim() : item.sldTituloPt.trim())} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
+                            } else if (opt === 22) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} fecha={item.prFecha} texto={item.prTextoTwt} codpub={item.prCodPub} />
+                            } else if (opt === 23) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} url={item.urlpw.trim()} folderimg={folderImg} urlportada={item.urlportada.trim()} />
+                            } else if (opt === 24 || opt === 25) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} folderimg={folderImg} urlportadavid={item.portadaVideo.trim()} urlvideo2={item.urlvideo2} nombre={router.locale === "es" ? item.titulo : (router.locale === "en" ? item.tituloEn : item.tituloPt)} />
+                            } else if (opt === 26 || opt === 28) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} url={"/" + router.locale + item.sldEnlace.trim()} nombre={router.locale === "es" ? item.sldTitulo.trim() : (router.locale === "en" ? item.sldTituloEn.trim() : item.sldTituloPt.trim())} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
+                            } else if (opt === 47 || opt === 48 || opt === 49 || opt === 52 || opt === 55 || opt === 56 || opt === 57 || opt === 58 || opt === 59 || opt === 60 || opt === 62 || opt === 63 || opt === 64 || opt === 65 || opt === 66 || opt === 67 || opt === 72) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} url={router.locale === "es" ? item.dmUrlPagWeb : (router.locale === "en" ? item.dmDescTramiteEn.trim() : item.dmDescTramitePt.trim())} nombre={item.dmDescripcion.trim()} folderimg={folderImg} urlportada={router.locale === "es" ? item.dmUrlFoto.trim() : (router.locale === "en" ? item.dmDescripcionEn.trim() : item.dmDescripcionPt.trim())} />
+                            } else if (opt === 50) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} folderdoc={folderDoc} url={item.sldEnlace} nombre={item.sldTitulo.trim()} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
+                            } else if (opt === 51) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} folderdoc={folderDoc} url={item.sldEnlace.trim()} nombre={item.sldTitulo.trim()} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
+                            } else if (opt === 68) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} nombre={item.sldTitulo.trim()} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
+                            } else if (opt === 80) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} codigo={item.id} titulo={item.titulo.trim()} urlportada={item.urlportada.trim()} />
+                            } else if (opt === 81) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} nombre={router.locale === "es" ? item.sldTitulo.trim() : (router.locale === "en" ? item.sldTituloEn.trim() : item.sldTituloPt.trim())} urlportada={router.locale === "es" ? item.sldUrlImgVid.trim() : (router.locale === "en" ? item.sldUrlImgVidEn.trim() : item.sldUrlImgVidPt.trim())} urlimgweb={item.sldEnlace.trim()} />
+                            } else if (opt === 82) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} nombre={item.dmDescripcion.trim()} urlportada={router.locale === "es" ? item.dmUrlFoto.trim() : (router.locale === "en" ? item.dmDescripcionEn.trim() : item.dmDescripcionPt.trim())} urlimgweb={router.locale === "es" ? item.dmUrlPagWeb.trim() : (router.locale === "en" ? item.dmDescTramiteEn.trim() : item.dmDescTramitePt.trim())} />
+                            } else if (opt === 83) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} folderImg={folderImg} urlimgweb={item.dmUrlFoto} profesional={item.dmNombreGrad} cargo={item.dmProfesion} testimonio={item.dmRespuesta} />
+                            } else if (opt === 84) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} nombre={(item.glbDescripc !== null && item.glbDescripc !== "") ? item.glbDescripc.trim() : "Imagen de Laboratorio - UTEQ"} folderimg={folderImg} urlimgvid={item.glbUrlImg.trim()} />
+                            } else if (opt === 85) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} nombre={router.locale === "es" ? item.evDescripcion.trim() : (router.locale === "en" ? (item.evDescriptionEn ? item.evDescriptionEn.trim() : "") : (item.evDescriptionPt ? item.evDescriptionPt.trim() : ""))} urlportada={router.locale === "es" ? item.evtUrlAfiche.trim() : (router.locale === "en" ? item.evtUrlAficheEn.trim() : item.evtUrlAfichePt.trim())} />
+                            } else if (opt === 90) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} folderdoc={folderDoc} url={item.dtUrlEnlace.trim()} nombre={router.locale === "es" ? item.dtDescripcion1.trim() : (router.locale === "en" ? item.dtDescripcion1En.trim() : item.dtDescripcion1Pt.trim())} folderimg={folderImg} urlimgvid={item.dtImagen.trim()} />
+                            } else if (opt === 91) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} option={item.sldTipo} folderdoc={folderDoc} url={router.locale === "es" ? item.sldEnlace.trim() : (router.locale === "en" ? item.sldEnlaceEn.trim() : item.sldEnlacePt.trim())} nombre={router.locale === "es" ? item.sldTitulo.trim() : (router.locale === "en" ? item.sldTituloEn.trim() : item.sldTituloPt.trim())} folderimg={folderImg} urlimgvid={router.locale === "es" ? item.sldUrlImgVid.trim() : (router.locale === "en" ? item.sldUrlImgVidEn.trim() : item.sldUrlImgVidPt.trim())} />
+                            } else if (opt === 92) {
+                                return <ItemSlider key={uuidv4()} tipo={opt} urlembvid={item.video} nombre={item.titulo} palabras={item.palabras_clave} autores={item.autor_principal} codigo={item.idponencia} />
+                            } else {
+                                return <ItemSlider key={uuidv4()} tipo={opt} option={item.sldTipo} folderdoc={folderDoc} url={item.sldEnlace.trim()} nombre={router.locale === "es" ? item.sldTitulo.trim() : (router.locale === "en" ? item.sldTituloEn.trim() : item.sldTituloPt.trim())} folderimg={folderImg} urlimgvid={item.sldUrlImgVid.trim()} />
+                            }
                         }
-                    }
-                )
-            }
-        </Carousel>
+                    )
+                }
+            </Carousel>
+        </div>
         <Modal
             size="lg"
             show={modalShow}

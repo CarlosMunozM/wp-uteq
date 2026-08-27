@@ -9,7 +9,7 @@ function BoxMetric(metricNumber, metricLabel, urlImage, index, typeCard, urlPage
     if (typeCard === 1 || typeCard === 3 || typeCard === 4) {
         if (urlPage !== "" && urlPage !== "#" && urlPage !== null) {
             return (
-                <div className="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-4 mb-2 mx-auto" key={index}>
+                <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 mb-2 mx-auto" key={index}>
                     <a href={urlPage} target="_blank" className="link-metric-univ" data-toggle="tooltip" data-placement="bottom" title={router.locale === "es" ? "Ir a la página web" : (router.locale === "en" ? "Go to the website" : "Ir para o sítio web")}>
                         <div className={typeCard === 1 ? "card panel-metcs-ind-bx" : (typeCard === 3 ? "card panel-metcs-ind-mdm-bx" : "card panel-metcs-ind-end-bx")}>
                             <div className="card-body">
@@ -31,7 +31,7 @@ function BoxMetric(metricNumber, metricLabel, urlImage, index, typeCard, urlPage
             )
         } else {
             return (
-                <div className="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-4 mb-2 mx-auto" key={index}>
+                <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 mb-2 mx-auto" key={index}>
                     <div className={typeCard === 1 ? "card panel-metcs-ind-bx" : (typeCard === 3 ? "card panel-metcs-ind-mdm-bx" : "card panel-metcs-ind-end-bx")}>
                         <div className="card-body">
                             <div className="row">
