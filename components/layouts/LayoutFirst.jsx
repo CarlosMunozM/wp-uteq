@@ -1,5 +1,5 @@
 import { HeadComponent, FooterComponent, SliderComponent, SliderMultiComponent, ModalPage, BoxMetric, TopMenu, SliderImg } from 'components';
-import { VIDEOS_FOLDER } from 'config';
+import { VIDEOS_FOLDER, NEWSPAPERS_FOLDER } from 'config';
 
 
 export { LayoutFirst };
@@ -107,7 +107,7 @@ function LayoutFirst(data) {
 
             listAuxData = [dataIngs, ...listAuxData];
             // Imagen nueva de Educación Continua - UTEQ
-            
+
             return (SliderImg(listAuxData, 81, 2000, 1000))
 
         }
@@ -269,11 +269,16 @@ function LayoutFirst(data) {
     }
 
     const renderElementSectionMain = (dataGnrl) => {
+
+        const newspaper = Array.isArray(dataGnrl.newspapers)
+            ? dataGnrl.newspapers[0]
+            : dataGnrl.newspapers;
+
         return (
             <div className="container-fluid g-0">
                 <div className="row g-0">
                     <div className="col-md-12 col-lg-4 g-0">
-                        <div className="col-md-12 w-100 text-center p-2 title-section">{data.language === "en" ? "JOURNALS" : "REVISTAS"}</div>
+                        <div className="col-md-12 w-100 text-center p-2 title-section">{data.language === "es" ? "REVISTAS DE INVESTIGACIÓN" : (data.language === "en" ? "RESEARCH JOURNALS" : "REVISTAS DE PESQUISA")}</div>
                         <div className="col-md-12 w-100 pnl-sld-mgz-index">
                             {SliderImg(dataGnrl.magazines, 82, 2000, 1000)}
                         </div>
@@ -287,11 +292,34 @@ function LayoutFirst(data) {
                         </div>
                     </div>
                     <div className="col-md-12 col-lg-4 g-0">
+                        {/*
                         <div className="col-md-12 w-100 text-center p-2 title-section">{data.language === "es" ? "EDUCACIÓN CONTINUA" : (data.language === "en" ? "CONTINUING EDUCATION" : "FORMAÇÃO CONTÍNUA")}</div>
                         <div className="col-md-12 w-100">
                             <a href="https://educacioncontinua.uteq.edu.ec/" target="_blank">
                                 {renderCoursesEdCntPanel(data.courses, dataGnrl.language)}
                             </a>
+                        </div>
+                         */}
+                        <div className="col-md-12 w-100 text-center p-2 title-section">
+                            {data.language === "es" ? "REVISTAS MENSUALES" : (data.language === "en" ? "MONTHLY JOURNALS" : "REVISTAS MENSAIS")}
+                        </div>
+
+                        <div className="newspaper-container">
+                            {dataGnrl.newspapers && dataGnrl.newspapers.map((newspaper, index) => (
+                                <a
+                                    key={index}
+
+                                    href={newspaper.urlpw}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img
+                                        src={NEWSPAPERS_FOLDER + newspaper.urlportada}
+                                        className="newspaper-image"
+                                        alt="Revista Mensual"
+                                    />
+                                </a>
+                            ))}
                         </div>
                     </div>
                 </div>

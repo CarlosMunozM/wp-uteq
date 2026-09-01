@@ -2,7 +2,7 @@ import axios from 'axios';
 import { LayoutFirst } from 'components/layouts';
 import {
     WS_LIST_IMAGES_SLIDER, WS_LIST_METRICS_SGA, WS_LIST_DATA_GENERAL_NUM1, WS_LIST_DATA_EVENTS, WS_LIST_DATA_NEWS_BY_DEPT,
-    WS_LIST_DATA_NEWS_NOT_INCLUDE_ALL, FRONT_PG_IMGS_FOLDER, WS_LIST_IS_CAREERS_GRADE_BY_FACULTY, apiUrl
+    WS_LIST_DATA_NEWS_NOT_INCLUDE_ALL, FRONT_PG_IMGS_FOLDER, WS_LIST_IS_CAREERS_GRADE_BY_FACULTY, apiUrl, WS_LIST_NEWSPAPERS_MONTH
 } from 'config';
 
 
@@ -87,6 +87,7 @@ export const getStaticProps = async ({ locale }) => {
     const resNewsNIncldAll = await make_request_ws(`${WS_LIST_DATA_NEWS_NOT_INCLUDE_ALL}`);
     const resSldEdCnt = await make_request_ws(`${WS_LIST_IMAGES_SLIDER}SECUN/21`);
     const resDataCareers = await make_request_ws(WS_LIST_IS_CAREERS_GRADE_BY_FACULTY);
+    const resNewspapers = await make_request_ws(`${WS_LIST_NEWSPAPERS_MONTH}2`);
 
     return {
         props: {
@@ -107,6 +108,7 @@ export const getStaticProps = async ({ locale }) => {
             bannerimg: '',
             codpage: '0b31955d-0b08-49a7-b031-f7c7407d913b',
             language: locale,
+            newspapers: resNewspapers.data,
         },
     	revalidate: 60,
     };

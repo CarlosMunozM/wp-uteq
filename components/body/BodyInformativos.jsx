@@ -167,7 +167,7 @@ function BodyInformativos(data) {
 	
 
     return (<>
-        <h2 className="title-cont-page text-center">{data.language === "es" ? "Periódico Universitario" : (data.language === "en" ? "University Newspaper" : "Jornal da Universidade")}</h2><br />
+        <h2 className="title-cont-page text-center">{data.language === "es" ? "Revistas Mensuales" : (data.language === "en" ? "Monthly Magazines" : "Revistas mensais")}</h2><br />
         <div className="col-md-12 w-100">
             {(data.newspapers !== null && data.newspapers !== "") && SliderImg(data.newspapers, 23, 3000, 1000)}
         </div><br />
