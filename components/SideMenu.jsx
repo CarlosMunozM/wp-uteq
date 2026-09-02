@@ -294,10 +294,10 @@ function SideMenu(data) {
         }
         {
             (data.option !== 23 && data.option !== 45 && data.option !== 47 && data.option !== 48 && data.option !== 49 && data.option !== 52 && data.option !== 55 && data.option !== 56 && data.option !== 57 && data.option !== 58 && data.option !== 59 && data.option !== 60 && data.option !== 62 && data.option !== 63 && data.option !== 64 && data.option !== 65 && data.option !== 66 && data.option !== 67 && data.option !== 72) && dataNwsp.length > 0 && (
-                <><div className="col-md-12 w-100 text-center p-2 title-mn-third">{router.locale === "es" ? "Revistas Mensuales" : (router.locale === "en" ? "Monthly Magazines" : "Revistas mensais")}</div>
+                <><div className="col-md-12 w-100 text-center p-2 title-mn-third">{router.locale === "es" ? "Revista Mensual" : (router.locale === "en" ? "Monthly magazine" : "Revista mensal")}</div>
                     <div className="col-md-12 w-100"><a target="_blank" data-toggle="tooltip" data-placement="bottom"
-                        title={`${router.locale === "es" ? "Revistas mensuales edición" : (router.locale === "en" ? "Monthly magazines edition" : "Edição mensal de revistas")} ${letterMonth[dataNwsp[0].mes - 1]} ${dataNwsp[0].anio}`} href={dataNwsp[0].urlpw}>
-                        <img src={`${NEWSPAPERS_FOLDER}${dataNwsp[0].urlportada}`} className="d-block w-100 img-newsp-sm" alt={`${router.locale === "es" ? "Revistas mensuales edición" : (router.locale === "en" ? "Monthly magazines edition" : "Edição mensal de revistas")} ${letterMonth[dataNwsp[0].mes - 1]} ${dataNwsp[0].anio}`} />
+                        title={`${router.locale === "es" ? "Revista mensual edición" : (router.locale === "en" ? "Monthly magazine edition" : "Edição mensal da revista")} ${letterMonth[dataNwsp[0].mes - 1]} ${dataNwsp[0].anio}`} href={dataNwsp[0].urlpw}>
+                        <img src={`${NEWSPAPERS_FOLDER}${dataNwsp[0].urlportada}`} className="d-block w-100 img-newsp-sm" alt={`${router.locale === "es" ? "Revista mensual edición" : (router.locale === "en" ? "Monthly magazine edition" : "Edição mensal da revista")} ${letterMonth[dataNwsp[0].mes - 1]} ${dataNwsp[0].anio}`} />
                     </a></div><br /></>
             )
         }

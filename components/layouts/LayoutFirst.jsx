@@ -306,18 +306,8 @@ function LayoutFirst(data) {
 
                         <div className="newspaper-container">
                             {dataGnrl.newspapers && dataGnrl.newspapers.map((newspaper, index) => (
-                                <a
-                                    key={index}
-
-                                    href={newspaper.urlpw}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <img
-                                        src={NEWSPAPERS_FOLDER + newspaper.urlportada}
-                                        className="newspaper-image"
-                                        alt="Revista Mensual"
-                                    />
+                                <a key={index} href={newspaper.urlpw} target="_blank" rel="noopener noreferrer">
+                                    <img src={NEWSPAPERS_FOLDER + newspaper.urlportada} className="newspaper-image" alt="Revista Mensual" />
                                 </a>
                             ))}
                         </div>
