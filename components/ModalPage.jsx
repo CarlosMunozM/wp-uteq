@@ -304,7 +304,8 @@ function ModalPage(cod_entidad, language) {
                             ssr={true}
                             infinite={true}
                             autoPlay={true}
-                            autoPlaySpeed={5000}
+                            //autoPlaySpeed={5000}
+                            autoPlaySpeed={45000}
                             keyBoardControl={true}
                             customTransition="all .5"
                             transitionDuration={900}
@@ -346,7 +347,8 @@ function ModalPage(cod_entidad, language) {
                                 ssr={true}
                                 infinite={true}
                                 autoPlay={true}
-                                autoPlaySpeed={5000}
+                                //autoPlaySpeed={5000}
+                                autoPlaySpeed={45000}
                                 keyBoardControl={true}
                                 customTransition="all .5"
                                 transitionDuration={900}
