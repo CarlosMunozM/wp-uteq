@@ -187,7 +187,7 @@ function BodyMaestria(data) {
                                                 <div className="row g-0 mt-2">
                                                     <a href={`${MASTER_ACADEMIC_IMGS_FOLDER}${data.infocar.crUrlImgMalla.trim()}`} target="_blank"
                                                         className="link-text-local" data-toggle="tooltip" data-placement="bottom" title={data.language === "es" ? "Ver imagen" : (data.language === "en" ? "View image" : "Ver imagem")}>
-                                                        <div className={`ratio ${(data.infocar.crProporcion !== null && data.infocar.crProporcion !== '') ? data.infocar.crProporcion.trim() : "ratio-4x3"}`}>
+                                                        <div className={`ratio ${(data.infocar.crProporcion !== null && data.infocar.crProporcion !== '') ? data.infocar.crProporcion.trim() : "ratio-16x9"}`}>
                                                             <img src={`${MASTER_ACADEMIC_IMGS_FOLDER}${data.infocar.crUrlImgMalla.trim()}`} id="career-acadm" alt={data.language === "es" ? "Malla académica" : (data.language === "en" ? "Academic grid" : "Grelha académica")} />
                                                         </div>
                                                     </a>
