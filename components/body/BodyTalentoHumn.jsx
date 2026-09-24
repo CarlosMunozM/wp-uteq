@@ -636,6 +636,7 @@ function BodyTalentoHumn(data) {
                     </div>
                 </>)
             }
+            {/* 
             {
                 datatbl.length > 0 && (<>
                     <DataTable
@@ -667,6 +668,7 @@ function BodyTalentoHumn(data) {
                     </div>
                 </>)
             }
+            
             {
                 dataCourses.length > 0 && (<>
                     <DataTable
@@ -691,6 +693,7 @@ function BodyTalentoHumn(data) {
             }
             <h2 className="title-cont-page text-rigth mt-5">{data.language === "es" ? "Únete a nuestra Red de Talentos" : (data.language === "en" ? "Join our Talent Network" : "Junte-se à nossa Rede de Talentos")}</h2><br />
             {FormUTH(listVocationalTrain, listWorkExperience, data.language)}
+            */}
         </div>
     </>);
 }

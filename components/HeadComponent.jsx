@@ -43,7 +43,8 @@ function HeadComponent(props) {
         {/*Preload, preconnect, dns-prefetch*/}
         <link rel="preload" href="/assets/css/styles.css" as="style" />
         <link rel="preload" href="/assets/css/font-awesome.min.css" as="style" />
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" as="style" />
+        {/*<link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" as="style" />*/}
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" as="style"/>
     	<link rel="preconnect" href="https://www.google.com"/>
         <link rel="dns-prefetch" href="https://yt3.ggpht.com"/>
         <link rel="dns-prefetch" href="https://i.ytimg.com"/>
@@ -55,7 +56,8 @@ function HeadComponent(props) {
     	{/*Styles*/}
     	<link rel="stylesheet" href="/assets/css/styles.css" />
         <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
+        {/*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>*/}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"/>
     
         {/*JS*/}
         {(props.vald_form === 1 || props.vald_form === 15 || props.vald_form === 11 || props.vald_form === 18 || props.vald_form === 36 || props.vald_form === 22 || props.vald_form === 42 || props.vald_form === 45 || props.vald_form === 62 || props.vald_form === 63 || props.vald_form === 69 || props.vald_form === 71 || props.vald_form === 78) && <script src={`https://www.google.com/recaptcha/api.js?render=${NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`} />}
