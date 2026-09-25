@@ -417,7 +417,7 @@ function ModalPage(cod_entidad, language) {
         ));
 
         return (
-            <Modal size="lg" show={modalShow} onHide={handleClose} animation={true} aria-labelledby="contained-modal-title-vcenter" centered>
+            <Modal dialogClassName="modal-uteq" show={modalShow} onHide={handleClose} animation={true} aria-labelledby="contained-modal-title-vcenter" centered>
                 {body}
             </Modal>
         );

@@ -79,7 +79,8 @@ export const getStaticProps = async ({ params, locale }) => {
             bannerimg: resInfoFacultad.data.dpImgBanner.trim(),
             codpage: resInfoFacultad.data.dpCodigo,
             language: locale
-        }
+        },
+        revalidate: 60 // Revalida en segundo plano cada minuto (60 segundos)
     };
 };
 

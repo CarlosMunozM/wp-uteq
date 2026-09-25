@@ -991,6 +991,18 @@ function BodyLaboratorios(data) {
             .includes(texto);
     });
 
+    /* REINICIALIZAR JS DESPUÉS DEL FILTRADO */
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            document.dispatchEvent(
+                new CustomEvent("laboratorios:updated")
+            );
+        }, 50);
+
+        return () => clearTimeout(timer);
+    }, [busqueda, laboratorioActivo]);
+
     return (
         <>
             <Head>
