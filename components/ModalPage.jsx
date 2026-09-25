@@ -126,7 +126,7 @@ function ModalPage(cod_entidad, language) {
     const ElementModalTwo = (urlenlace, descripcion, proporcion, urlrecurso, tiporec) => {
         return (<><div className="row">
             <div className="col-md-12">
-                <button type="button" className="btn-close topright float-end" data-bs-dismiss="modal" aria-label="Close" data-toggle="tooltip" data-placement="bottom"
+                <button type="button" className="modal-close-uteq" data-bs-dismiss="modal" aria-label="Cerrar" data-toggle="tooltip" data-placement="bottom"
                     title={language === "es" ? "Cerrar ventana modal" : (language === "en" ? "Close modal window" : "Fechar a janela modal")} onClick={handleClose}></button>
             </div>
             <div className="col-md-12">
@@ -322,17 +322,17 @@ function ModalPage(cod_entidad, language) {
                         <div className="col-md-12">
                             <button
                                 type="button"
-                                className="btn-close topright float-end"
+                                className="modal-close-uteq"
                                 data-bs-dismiss="modal"
-                                aria-label="Close"
+                                aria-label="Cerrar"
                                 data-toggle="tooltip"
                                 data-placement="bottom"
                                 title={
                                     language === "es"
-                                        ? "Cerrar ventana modal"
+                                        ? "Cerrar"
                                         : language === "en"
-                                            ? "Close modal window"
-                                            : "Fechar a janela modal"
+                                            ? "Close "
+                                            : "Fechar"
                                 }
                                 onClick={handleClose}
                             ></button>
