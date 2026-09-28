@@ -422,10 +422,11 @@ function LaboratorioInfo({ descripcion, carreras, language }) {
         <div className="lab-detail-intro">
             {/* Descripción */}
 
-            <div className="lab-detail-description">
-                {descripcion}
-            </div>
-
+            <div
+                className="lab-detail-description"
+                dangerouslySetInnerHTML={sanitizedData(descripcion || '')}
+            />
+            
             {/* Información */}
 
             <aside className="lab-info-card">
