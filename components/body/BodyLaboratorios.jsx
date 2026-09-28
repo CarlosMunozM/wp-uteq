@@ -426,7 +426,7 @@ function LaboratorioInfo({ descripcion, carreras, language }) {
                 className="lab-detail-description"
                 dangerouslySetInnerHTML={sanitizedData(descripcion || '')}
             />
-            
+
             {/* Información */}
 
             <aside className="lab-info-card">
@@ -683,6 +683,30 @@ function LaboratorioLightbox({
         });
     };
 
+    useEffect(() => {
+        if (imagenActiva === null) return;
+
+        const manejarTeclado = (event) => {
+            if (event.key === 'Escape') {
+                setImagenActiva(null);
+            }
+
+            if (event.key === 'ArrowLeft') {
+                anteriorImagen();
+            }
+
+            if (event.key === 'ArrowRight') {
+                siguienteImagen();
+            }
+        };
+
+        document.addEventListener('keydown', manejarTeclado);
+
+        return () => {
+            document.removeEventListener('keydown', manejarTeclado);
+        };
+    }, [imagenActiva]);
+
     return (
         <div
             onClick={() => setImagenActiva(null)}
@@ -731,6 +755,7 @@ function LaboratorioLightbox({
 
                 <button
                     type="button"
+                    className="lab-lightbox-mobile-arrow"
                     onClick={anteriorImagen}
                     style={{
                         position: 'absolute',
@@ -765,6 +790,7 @@ function LaboratorioLightbox({
 
                 <button
                     type="button"
+                    className="lab-lightbox-mobile-arrow"
                     onClick={siguienteImagen}
                     style={{
                         position: 'absolute',
