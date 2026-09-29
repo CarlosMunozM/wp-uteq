@@ -65,28 +65,64 @@ function changeFormatMonth(fecha) {
 
 function ItemSliderNews(props) {
     return (
-        <div className="item" key={props.key}>
-            <a href={`/${props.language}/comunicacion/noticia/${props.urlnoticia.trim()}`} target="_blank" style={{ textDecoration: "none" }} data-toggle="tooltip" data-placement="bottom" title={props.titular.trim()}>
+        <div className="item">
+            <a
+                href={`/${props.language}/comunicacion/noticia/${props.urlnoticia.trim()}`}
+                target="_blank"
+                style={{ textDecoration: "none" }}
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title={props.titular.trim()}
+            >
                 <div className="work">
-                    <div className="img-n1 d-flex align-items-end justify-content-center" style={{ backgroundImage: `url(${NEWS_SLIDER_FOLDER}${props.urlimg.trim()})` }}>
+                    <div
+                        className="img-n1 d-flex align-items-end justify-content-center"
+                        style={{
+                            backgroundImage: `url(${NEWS_SLIDER_FOLDER}${props.urlimg.trim()})`
+                        }}
+                    >
                         <div className="text w-100">
-                            <h3 className="title-news-sld">{props.titular.trim()}</h3>
-                            <h4 className="subtitle-news-sld">{props.fecha.substr(8, 2) + ' ' + changeFormatMonth(props.fecha.substr(5, 2)) + ', ' + props.fecha.substr(0, 4)}</h4>
-                            <h4 className="subtitle-news-sld">{`Institucional, ${props.departamento.trim()}`}</h4>
+                            <h3 className="title-news-sld">
+                                {props.titular.trim()}
+                            </h3>
+
+                            <h4 className="subtitle-news-sld">
+                                {props.fecha.substr(8, 2) +
+                                    ' ' +
+                                    changeFormatMonth(props.fecha.substr(5, 2)) +
+                                    ', ' +
+                                    props.fecha.substr(0, 4)}
+                            </h4>
+
+                            <h4 className="subtitle-news-sld">
+                                {`Institucional, ${props.departamento.trim()}`}
+                            </h4>
                         </div>
                     </div>
                 </div>
             </a>
         </div>
-    )
+    );
 }
 
 function ItemSliderCareer(props) {
     return (
-        <div className="item" key={props.key}>
-            <a href={`/${props.language}/grado/carrera/${props.urlpgw}`} target="_blank" style={{ textDecoration: "none" }} data-toggle="tooltip" data-placement="bottom" title={props.descriptionimg}>
+        <div className="item">
+            <a
+                href={`/${props.language}/grado/carrera/${props.urlpgw}`}
+                target="_blank"
+                style={{ textDecoration: "none" }}
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title={props.descriptionimg}
+            >
                 <div className="work">
-                    <div className="img-n1 img-career-sld d-flex align-items-end justify-content-center" style={{ backgroundImage: `linear-gradient(to bottom, rgba(2, 90, 39, 0), rgba(2, 90, 39, 0.7)), url(${IMG_VERTICAL_PRINCIPAL_CAREERS}${props.urlimage.trim()})` }}>
+                    <div
+                        className="img-n1 img-career-sld d-flex align-items-end justify-content-center"
+                        style={{
+                            backgroundImage: `linear-gradient(to bottom, rgba(2, 90, 39, 0), rgba(2, 90, 39, 0.7)), url(${IMG_VERTICAL_PRINCIPAL_CAREERS}${props.urlimage.trim()})`
+                        }}
+                    >
                         <div className="text w-100">
                             <h3 className="title-career-sld">{props.namecrs}</h3>
                             <h4 className="subtitle-career-sld">{props.faculty}</h4>
@@ -95,9 +131,8 @@ function ItemSliderCareer(props) {
                 </div>
             </a>
         </div>
-    )
+    );
 }
-
 function SliderMultiComponent(datasld, option, language, sld_type) {
 
     const [autoPlay, setAutoPlay] = useState(false);

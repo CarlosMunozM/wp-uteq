@@ -203,7 +203,7 @@ function TopMenu() {
             dataItems.map(
                 (item) => {
                     if (item.mnListadoSubmenus.length > 0) {
-                        return <NavDropdown id="basic-nav-dropdown-lv1" as="li" key={uuidv4()} title={router.locale === "es" ? item.mnNombre.trim() : (router.locale === "en" ? item.mnNombreEn : item.mnNombrePt)} aria-expanded="false" className='link-dm-item link-menu-tst'>
+                        return <NavDropdown id={`basic-nav-dropdown-lv1-${item.mnCodigo}`} as="li" key={item.mnCodigo} title={router.locale === "es" ? item.mnNombre.trim() : (router.locale === "en" ? item.mnNombreEn : item.mnNombrePt)} className='link-dm-item link-menu-tst'>
                             {listItemsSecondLevel(item)}
                         </NavDropdown>
                     } else {
@@ -219,8 +219,8 @@ function TopMenu() {
             dataItems.mnListadoSubmenus.filter(itemsm => itemsm.smCodPadre === -1).sort((a, b) => (a.smOrden > b.smOrden) ? 1 : -1).map(
                 (item) => {
                     if (dataItems.mnListadoSubmenus.filter(itemsm => itemsm.smCodPadre === item.smCodigo).length > 0) {
-                        return <NavDropdown id="basic-nav-dropdown-nst" as="ul" key={uuidv4()}
-                            title={router.locale === "es" ? item.smNombre.trim() : (router.locale === "en" ? item.smNombreEn.trim() : item.smNombrePt.trim())} drop='end' aria-expanded="false">
+                        return <NavDropdown id={`basic-nav-dropdown-nst-${item.smCodigo}`} as="ul" key={uuidv4()}
+                            title={router.locale === "es" ? item.smNombre.trim() : (router.locale === "en" ? item.smNombreEn.trim() : item.smNombrePt.trim())} drop='end'>
                             {listItemsThirdLevel(dataItems, item.smCodigo)}
                         </NavDropdown>
                     } else {
@@ -236,7 +236,7 @@ function TopMenu() {
             dataItems.mnListadoSubmenus.filter(itemsm => itemsm.smCodPadre === codNvl2).sort((a, b) => (a.smOrden > b.smOrden) ? 1 : -1).map(
                 (item) => {
                     if (dataItems.mnListadoSubmenus.filter(itemsm => itemsm.smCodPadre === item.smCodigo).length > 0) {
-                        return <NavDropdown id="basic-nav-dropdown-nst" as="li" key={uuidv4()} title={router.locale === "es" ? item.smNombre.trim() : (router.locale === "en" ? item.smNombreEn.trim() : item.smNombrePt.trim())} drop='end' aria-expanded="false">
+                        return <NavDropdown id={`basic-nav-dropdown-nst-${item.smCodigo}`} as="li" key={uuidv4()} title={router.locale === "es" ? item.smNombre.trim() : (router.locale === "en" ? item.smNombreEn.trim() : item.smNombrePt.trim())} drop='end' aria-expanded="false">
                             {listItemsFourthLevel(dataItems, item.smCodigo)}
                         </NavDropdown>
                     } else {
